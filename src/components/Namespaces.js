@@ -7,8 +7,6 @@ import {
   URLPods
 } from "../settings";
 
-import "react-bootstrap";
-
 const AllNamespaces = () => {
 
   const [info, setInfo] = useState([]);

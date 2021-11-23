@@ -7,11 +7,7 @@ import {
     URLPods
 } from "../settings";
 
-import "react-bootstrap";
-
 const AllServices = () => {
-    // const init = { QuoteNum: "" }
-    const [num, setNum] = useState([]);
 
     const [info, setInfo] = useState([]);
     console.log(info);
@@ -31,12 +27,6 @@ const AllServices = () => {
     useEffect(() => {
         fetchService();
     }, []);
-
-    const onChange = (evt) => {
-        evt.preventDefault();
-        const num = evt.target.value;
-        setNum(num);
-    };
 
     return (
         <div className="pagesMove">

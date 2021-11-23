@@ -8,8 +8,6 @@ import {
     URLPods
 } from "../settings";
 
-import "react-bootstrap";
-
 const AllDeployments = () => {
  
   const [info, setInfo] = useState([]);

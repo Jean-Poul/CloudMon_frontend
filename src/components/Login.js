@@ -100,7 +100,6 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
     facade.logout()
     setLoginStatus(false)
     setAdminStatus(false)
-    //header.classList.remove("adminStyle")
   }
   
   const login = (user, pass) => {
@@ -112,7 +111,6 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
         if (parseJwt(facade.getToken()) == "admin") {
           setAdminStatus(true)
-          //header.classList.add("adminStyle");
         }
 
       }).catch((error) => {
