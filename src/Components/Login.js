@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import facade from "./apiFacade";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
+import AddUser from "./AddUser";
 
 
 function LogIn({ login }) {
@@ -108,7 +109,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         let name = parseJwtName(facade.getToken());
         setLoginStatus(true, name)
 
-        if (parseJwt(facade.getToken()) == "admin") {
+        if (parseJwt(facade.getToken()) === "admin") {
           setAdminStatus(true)
           header.classList.add("adminStyle");
         }
@@ -129,6 +130,8 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         <>
           <LogIn login={login} />
           <p>{errorMessage}</p>
+          <br />
+          <AddUser />
         </>
       ) :
         (<div>

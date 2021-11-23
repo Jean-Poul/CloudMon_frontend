@@ -25,12 +25,19 @@ ul.header li a:hover:not(.active) {
   color: white !important;
 }
 
+thead {
+  text-align: center;
+}
+
 table,
 th,
 td {
   border-collapse: collapse;
   border: 1px solid black;
+  padding: 0.5rem;
 }
+
+
 
 .floatLeft {
   float: left;

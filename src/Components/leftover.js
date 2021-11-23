@@ -1,13 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, InputGroup, FormControl, Table, Form } from "react-bootstrap";
-import { URLQuotes } from "./settings";
+import { URLQuotes, URLNamespace } from "../settings";
 import logo from './bBad.jpeg';
 
 const AllQuotes = () => {
 
     const init = { QuoteNum: "" }
     const [quotes, setQuotes] = useState([]);
-    const [num, setNum] = useState();
+    const [num, setNum] = useState([]);
+
+    const [info, setInfo] = useState([]);
+
+    const fetchNamespace = () => {
+        fetch(URLNamespace)
+            .then(res => res.json())
+            .then(data => {
+                setInfo(data);
+            })
+
+           
+    }
+    
+
+    const getNamespaces = (evt) => {
+        evt.preventDefault();
+        fetchNamespace();
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const fetchRandomQuote = () => {
         fetch(URLQuotes)
@@ -16,10 +47,12 @@ const AllQuotes = () => {
                 setQuotes(data);
             })
     }
+    
 
     //loads random quote first time
     useEffect(() => {
-        fetchRandomQuote();
+  //   fetchNamespace();
+     fetchRandomQuote();
     }, []);
 
     const fetchQuote = () => {
@@ -27,6 +60,7 @@ const AllQuotes = () => {
         fetch(URL)
             .then((res) => res.json())
             .then((data) => {
+               
                 setQuotes(data);
             });
     };
@@ -46,6 +80,57 @@ const AllQuotes = () => {
         <div>
 
             <Container>
+
+            <Row className="mt-4">
+                    <Col>
+                    {(typeof info.all != "undefined") ? (
+                        <Table striped bordered hover>
+                        
+                        
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>STATUS</th>
+                                    <th>AGE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    info.map(element => {
+                                        return (
+                                            <tr key={element.id}>
+                                                <td >{element}</td>
+                                                <td>{element}</td>
+                                                <td>{element}</td>
+                                            </tr>
+                                        )
+                                    }
+                                    )
+                                    }
+                            </tbody>
+                            
+
+                        </Table>
+                        ) : ('') }
+                    </Col> 
+                </Row>
+
+                <Row> 
+                    <Col>
+                        <Form onChange={onChange} className="mt-4" label="">
+                            <Form.Control
+                                type="text"
+                                id="NsNumber"
+                                placeholder="Input number of namespaces you want"
+                            />
+                            <Button onClick={getNamespaces} variant="primary" type="submit">
+                                Get namespaces
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+
+
                 <h2>Quotes from Breaking Bad</h2>
                 <Row className="mt-4">
                     <img src={logo} />

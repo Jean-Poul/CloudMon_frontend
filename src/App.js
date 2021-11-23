@@ -4,8 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import AllJokes from "./AllJokes";
 import AllScrape from "./AllScrape";
-import Login from "./Login";
-import AllQuotes from "./Admin";
+import Login from "./Components/Login";
+import {
+  Kubernetes,
+  AllNamespaces,
+  AllDeployments,
+  AllServices,
+  AllPods
+} from "./Components/Admin";
 import Reflection from "./Reflection";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
 
@@ -13,30 +19,49 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark" id="header">
-        <Navbar.Brand href="#home">Alexander Pihl</Navbar.Brand>
+        <Navbar.Brand href="#home">CloudMon</Navbar.Brand>
         <Nav className="mr-auto">
-          <NavLink className="nav-link" exact activeClassName="selected" href="/" to="/">
+          <NavLink
+            className="nav-link"
+            exact
+            activeClassName="selected"
+            href="/"
+            to="/"
+          >
             Home
-        </NavLink>
+          </NavLink>
           <NavLink className="nav-link" activeClassName="selected" to="/jokes">
             Jokes
-        </NavLink>
+          </NavLink>
 
           {isLoggedIn && (
-            <NavLink className="nav-link" activeClassName="selected" to="/scrape" href="/scrape">
+            <NavLink
+              className="nav-link"
+              activeClassName="selected"
+              to="/scrape"
+              href="/scrape"
+            >
               Scrape
             </NavLink>
           )}
           {isAdmin && (
             <>
               <li>
-                <NavLink className="nav-link" activeClassName="selected" to="/admin">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="selected"
+                  to="/admin"
+                >
                   Admin
-            </NavLink>
+                </NavLink>
               </li>
             </>
           )}
-          <NavLink className="nav-link" activeClassName="selected" to="/login-out">
+          <NavLink
+            className="nav-link"
+            activeClassName="selected"
+            to="/login-out"
+          >
             {loginMsg}
           </NavLink>
           {isLoggedIn && (
@@ -47,7 +72,6 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
             </>
           )}
         </Nav>
-
       </Navbar>
     </>
   );
@@ -56,7 +80,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [loginName, setLoginName] = useState('');
+  const [loginName, setLoginName] = useState("");
 
   let history = useHistory();
 
@@ -77,7 +101,7 @@ export default function App() {
         loginMsg={isLoggedIn ? "Logout" : "Login"}
         isLoggedIn={isLoggedIn}
         isAdmin={isAdmin}
-        loginName={isLoggedIn ? loginName : ''}
+        loginName={isLoggedIn ? loginName : ""}
       />
 
       <div className="content">
@@ -102,6 +126,12 @@ export default function App() {
               setAdminStatus={setAdminStatus}
             />
           </Route>
+
+          <Route exact path="/namespaces" component={AllNamespaces}></Route>
+          <Route exact path="/deployments" component={AllDeployments}></Route>
+          <Route exact path="/services" component={AllServices}></Route>
+          <Route exact path="/pods" component={AllPods}></Route>
+          
         </Switch>
       </div>
     </div>
@@ -140,7 +170,7 @@ function Admin() {
   return (
     <div className="pageContent">
       <h2>Admin</h2>
-      <AllQuotes />
+      <Kubernetes />
     </div>
   );
 }
