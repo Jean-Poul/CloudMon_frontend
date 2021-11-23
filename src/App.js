@@ -9,8 +9,11 @@ import GovCloud from './images/GovCloud-192x192.png'
 import { GiHamburgerMenu, GiCircle, GiHouse, GiPlainCircle } from 'react-icons/gi'
 import AllPods from "./components/Pods";
 import AllDeployments from "./components/Deployments";
-import AllNodes from "./components/Nodes";
+import AllNamespaces from "./components/Namespaces";
 import AllServices from "./components/Services";
+import Kubernetes from "./components/Kubernetes";
+import Infrastruktur from "./components/Infrastruktur";
+import Applikationer from "./components/Applikationer";
 
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
@@ -27,11 +30,32 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
             <GiHouse />Home
           </NavLink>
         </div>
+
         <div className="htext2">
           <NavLink className="nav-link" activeClassName="selected" to="/login-out">
             {loginMsg}
           </NavLink>
         </div>
+
+        <div className="htext3">
+          <NavLink exact activeClassName="selected" href="/" to="/kubernetes">
+            Kubernetes
+          </NavLink>
+        </div>
+
+        <div className="htext4">
+          <NavLink exact activeClassName="selected" href="/" to="/applikationer">
+            Applikationer
+          </NavLink>
+        </div>
+
+        <div className="htext5">
+          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur">
+            Infrastruktur
+          </NavLink>
+        </div>
+
+
       </header>
 
       {showNav &&
@@ -49,8 +73,8 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                     <NavLink className="nav-link" activeClassName="selected" to="/deployments">
                       <GiPlainCircle /> Deployments
                     </NavLink>
-                    <NavLink className="nav-link" activeClassName="selected" to="/nodes">
-                      <GiPlainCircle /> Nodes
+                    <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
+                      <GiPlainCircle /> Namespaces
                     </NavLink>
                     <NavLink className="nav-link" activeClassName="selected" to="/Services">
                       <GiPlainCircle /> Services
@@ -109,6 +133,18 @@ export default function App() {
             <Velkommen />
           </Route>
 
+          <Route path="/kubernetes">
+            <Kubernetes />
+          </Route>
+
+          <Route path="/applikationer">
+            <Applikationer />
+          </Route>
+
+          <Route path="/infrastruktur">
+            <Infrastruktur />
+          </Route>
+
           <Route path="/pods">
             <AllPods />
           </Route>
@@ -117,8 +153,8 @@ export default function App() {
             <AllDeployments />
           </Route>
 
-          <Route path="/nodes">
-            <AllNodes />
+          <Route path="/namespaces">
+            <AllNamespaces />
           </Route>
 
           <Route path="/services">
@@ -138,44 +174,3 @@ export default function App() {
     </div>
   );
 }
-
-// You can think of these components as "pages" in your app.
-/* function Home() {
-  return (
-    <div className="pageContent">
-      
-    </div>
-  );
-}
-
-function Pods() {
-  return (
-    <div className="pageContent">
-
-    </div>
-  );
-}
-
-function Deployments() {
-  return (
-    <div className="pageContent">
-
-    </div>
-  );
-}
-
-function Nodes() {
-  return (
-    <div className="pageContent">
-
-    </div>
-  );
-}
-
-function Services() {
-  return (
-    <div className="pageContent">
-
-    </div>
-  );
-} */

@@ -1,40 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, InputGroup, FormControl, Table, Form } from "react-bootstrap";
+import {
+    URLNamespaces,
+    URLDeployments,
+    URLServices,
+    URLPods
+} from "../settings";
+
+import "react-bootstrap";
 
 const AllPods = () => {
+    // const init = { QuoteNum: "" }
+    const [num, setNum] = useState([]);
+
+    const [info, setInfo] = useState([]);
+    console.log(info);
+    const fetchPod = () => {
+        fetch(URLPods)
+            .then((res) => res.json())
+            .then((data) => {
+                setInfo(data);
+            });
+    };
+
+    const getPod = (evt) => {
+        evt.preventDefault();
+        fetchPod();
+    };
+
+    useEffect(() => {
+        fetchPod();
+    }, []);
+
+    const onChange = (evt) => {
+        evt.preventDefault();
+        const num = evt.target.value;
+        setNum(num);
+    };
 
     return (
-        <div div className="pagesMove">
+        <div className="pagesMove">
 
             <Container>
-            <h1>Pods : Data</h1>
-            <br/>
+                <h2>GovCloud: Services</h2>
                 <Row className="mt-4">
                     <Col>
-                        <h4>TABLENAME</h4>
-                        <p><a>data</a></p>
-                        <p></p>
-                    </Col>
-                    <Col>
-                        <h4>TABLENAME</h4>
-                        <p><a>data</a></p>
-                        <p></p>
-                    </Col>
-                    <Col>
-                        <h4>TABLENAME</h4>
-                        <p><a>data</a></p>
-                        <p></p>
-                    </Col>
-                    <Col>
-                        <h4>TABLENAME</h4>
-                        <p><a>data</a></p>
-                        <p></p>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Namespace</th>
+                                    <th>Name</th>
+                                    <th>Ready</th>
+                                    <th>Status</th>
+                                    <th>Restarts</th>
+                                    <th>Age</th>
+                                    <th>IP</th>
+                                    <th>Node</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    info.all && info.all.map(data => {
+                                        return (
+                                            <tr>
+                                                <td>{data.namespace}</td>
+                                                <td>{data.name}</td>
+                                                <td>{data.ready}</td>
+                                                <td>{data.status}</td>
+                                                <td>{data.restarts}</td>
+                                                <td>{data.age}</td>
+                                                <td>{data.ip}</td>
+                                                <td>{data.node}</td>
+                                            </tr>
+                                        )
+                                    }
+                                    )}
+                            </tbody>
+                        </Table>
                     </Col>
                 </Row>
             </Container>
-        </div>
 
+
+        </div>
     );
-}
+};
 
 export default AllPods;

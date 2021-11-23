@@ -120,8 +120,21 @@ div.htext2{
   margin-left: 94%;
   font-size: 30px;
 }
-
-
+div.htext3{
+  margin-top: -45px;
+  margin-left: 350px;
+  font-size: 30px;
+}
+div.htext4{
+  margin-top: -45px;
+  margin-left: 525px;
+  font-size: 30px;
+}
+div.htext5{
+  margin-top: -45px;
+  margin-left: 725px;
+  font-size: 30px;
+}
 
 /* .sidebar {
   position: fixed;
