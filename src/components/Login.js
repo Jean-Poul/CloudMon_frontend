@@ -35,7 +35,7 @@ function LogIn({ login }) {
               </Form.Group>
               <Button onClick={performLogin} variant="primary" type="submit">
                 Login
-                </Button>
+              </Button>
             </Form>
           </Col>
           <Col>
@@ -71,9 +71,10 @@ function LoggedIn() {
 
   return (
     <div>
-      <h2>Data Received from server</h2>
-      <h3>{dataFromServer}</h3>
+      
+      <h2>{dataFromServer}</h2>
       <p>{errorMessage}</p>
+      <h4>Are you sure you want to log out of CloudMon</h4>
     </div>
   )
 
@@ -99,7 +100,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
     facade.logout()
     setLoginStatus(false)
     setAdminStatus(false)
-    header.classList.remove("adminStyle")
+    //header.classList.remove("adminStyle")
   }
   const login = (user, pass) => {
     facade.login(user, pass)
@@ -110,7 +111,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
         if (parseJwt(facade.getToken()) == "admin") {
           setAdminStatus(true)
-          header.classList.add("adminStyle");
+          //header.classList.add("adminStyle");
         }
 
       }).catch((error) => {
@@ -124,19 +125,27 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
 
   return (
-    <div className="pageContent">
-      {!isLoggedIn ? (
-        <>
-          <LogIn login={login} />
-          <p>{errorMessage}</p>
-        </>
-      ) :
-        (<div>
-          <LoggedIn />
-
-          <button onClick={logout}>Logout</button>
-
-        </div>)}
+    <div className="pagesMove">
+      <div className="pageContent">
+        <Container>
+          <Row>
+            <Col>
+              {!isLoggedIn ? (
+                <>
+                  <LogIn login={login} />
+                  <p>{errorMessage}</p>
+                </>
+              ) :
+                (<div>
+                  <LoggedIn />
+                  <Form>
+                    <Button variant="danger" onClick={logout}>Logout</Button>
+                  </Form>
+                </div>)}
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   )
 
