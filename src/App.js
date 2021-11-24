@@ -18,7 +18,7 @@ import Applikationer from "./components/Applikationer";
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   const [showNav, setShowNav] = useState(true)
-  const [showFileData, setFileData] = useState(true)
+  const [showFileData, setFileData] = useState(false)
 
   return (
     <>
@@ -37,7 +37,9 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
           </NavLink>
         </div>
 
-        <div className="htext3">
+        {isLoggedIn && (
+              <>
+                      <div className="htext3">
           <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => setFileData(true)}>
             Kubernetes
           </NavLink>
@@ -55,7 +57,8 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
             Infrastruktur
           </NavLink>
         </div>
-
+              </>
+            )}
 
       </header>
 
