@@ -2,53 +2,106 @@ import React, { useState } from "react";
 import "./style2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import AllJokes from "./AllJokes";
-import AllScrape from "./AllScrape";
-import Login from "./Login";
-import AllQuotes from "./Admin";
-import Reflection from "./Reflection";
+import Login from "./components/Login";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
+import Velkommen from "./components/Velkommen";
+import GovCloud from './images/GovCloud-192x192.png'
+import { GiHamburgerMenu, GiCircle, GiHouse, GiPlainCircle } from 'react-icons/gi'
+import AllPods from "./components/Pods";
+import AllDeployments from "./components/Deployments";
+import AllNamespaces from "./components/Namespaces";
+import AllServices from "./components/Services";
+import Kubernetes from "./components/Kubernetes";
+import Infrastruktur from "./components/Infrastruktur";
+import Applikationer from "./components/Applikationer";
+
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
+  const [showNav, setShowNav] = useState(true)
+  const [showFileData, setFileData] = useState(false)
+
   return (
     <>
-      <Navbar bg="dark" variant="dark" id="header">
-        <Navbar.Brand href="#home">Alexander Pihl</Navbar.Brand>
-        <Nav className="mr-auto">
-          <NavLink className="nav-link" exact activeClassName="selected" href="/" to="/">
-            Home
-        </NavLink>
-          <NavLink className="nav-link" activeClassName="selected" to="/jokes">
-            Jokes
-        </NavLink>
+      <header>
+        <GiHamburgerMenu onClick={() => setShowNav(!showNav)} />
 
-          {isLoggedIn && (
-            <NavLink className="nav-link" activeClassName="selected" to="/scrape" href="/scrape">
-              Scrape
-            </NavLink>
-          )}
-          {isAdmin && (
-            <>
-              <li>
-                <NavLink className="nav-link" activeClassName="selected" to="/admin">
-                  Admin
-            </NavLink>
-              </li>
-            </>
-          )}
-          <NavLink className="nav-link" activeClassName="selected" to="/login-out">
+        <div className="htext">
+          <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => setFileData(false)}>
+            <GiHouse />Home
+          </NavLink>
+        </div>
+
+        <div className="htext2">
+          <NavLink className="nav-link" activeClassName="selected" to="/login-out" onClick={() => setFileData(false)}>
             {loginMsg}
           </NavLink>
-          {isLoggedIn && (
-            <>
-              <li className="floatRight">
-                <span>Logged in as {loginName}</span>
-              </li>
-            </>
-          )}
-        </Nav>
+        </div>
 
-      </Navbar>
+        {isLoggedIn && (
+              <>
+                      <div className="htext3">
+          <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => setFileData(true)}>
+            Kubernetes
+          </NavLink>
+
+        </div>
+
+        <div className="htext4">
+          <NavLink exact activeClassName="selected" href="/" to="/applikationer" onClick={() => setFileData(false)}>
+            Applikationer
+          </NavLink>
+        </div>
+
+        <div className="htext5">
+          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => setFileData(false)}>
+            Infrastruktur
+          </NavLink>
+        </div>
+              </>
+            )}
+
+      </header>
+
+      {showNav &&
+        <div className="sidenav active">
+          <Nav fixed="left" bg="dark" variant="dark" id="header">
+            <img className="logo" src={GovCloud} alt="GovCloud" />
+            
+            {isLoggedIn && (
+              <>
+                <div className="status">
+                  <div class="alert alert-warning" role="alert">
+                    <span className="loginStatus">You have {loginName} rights </span>
+                  </div>
+                </div>
+              </>
+            )}
+
+            <Nav className="flex-column">
+              {isAdmin, showFileData && (
+                <>
+                  <li>
+                    <div className="filedata active">
+                      <NavLink className="nav-link" activeClassName="selected" to="/pods">
+                        <GiPlainCircle /> Pods
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/deployments">
+                        <GiPlainCircle /> Deployments
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
+                        <GiPlainCircle /> Namespaces
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/Services">
+                        <GiPlainCircle /> Services
+                      </NavLink>
+                    </div>
+                  </li>
+                </>)}
+            </Nav>
+          </Nav>
+        </div>
+
+      }
     </>
   );
 };
@@ -83,17 +136,37 @@ export default function App() {
       <div className="content">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Velkommen />
           </Route>
-          <Route path="/jokes">
-            <Jokes />
+
+          <Route path="/kubernetes">
+            <Kubernetes />
           </Route>
-          <Route path="/scrape">
-            <Scrape />
+
+          <Route path="/applikationer">
+            <Applikationer />
           </Route>
-          <Route path="/admin">
-            <Admin />
+
+          <Route path="/infrastruktur">
+            <Infrastruktur />
           </Route>
+
+          <Route path="/pods">
+            <AllPods />
+          </Route>
+
+          <Route path="/deployments">
+            <AllDeployments />
+          </Route>
+
+          <Route path="/namespaces">
+            <AllNamespaces />
+          </Route>
+
+          <Route path="/services">
+            <AllServices />
+          </Route>
+
           <Route path="/login-out">
             <Login
               loginMsg={isLoggedIn ? "Logout" : "Login"}
@@ -104,43 +177,6 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-    </div>
-  );
-}
-
-// You can think of these components as "pages"
-// in your app.
-
-function Home() {
-  return (
-    <div className="pageContent">
-      <h2>Home</h2>
-      <Reflection />
-    </div>
-  );
-}
-
-function Jokes() {
-  return (
-    <div className="pageContent">
-      <AllJokes />
-    </div>
-  );
-}
-
-function Scrape() {
-  return (
-    <div className="pageContent">
-      <AllScrape />
-    </div>
-  );
-}
-
-function Admin() {
-  return (
-    <div className="pageContent">
-      <h2>Admin</h2>
-      <AllQuotes />
     </div>
   );
 }
