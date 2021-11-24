@@ -17,40 +17,41 @@ import Applikationer from "./components/Applikationer";
 
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
-  const [showNav, setShowNav] = useState(false)
+  const [showNav, setShowNav] = useState(true)
+  const [showFileData, setFileData] = useState(true)
 
   return (
     <>
       <header>
         <GiHamburgerMenu onClick={() => setShowNav(!showNav)} />
-        {/* <img className="logo" src={GovCloud} alt="GovCloud" /> */}
 
         <div className="htext">
-          <NavLink exact activeClassName="selected" href="/" to="/">
+          <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => setFileData(false)}>
             <GiHouse />Home
           </NavLink>
         </div>
 
         <div className="htext2">
-          <NavLink className="nav-link" activeClassName="selected" to="/login-out">
+          <NavLink className="nav-link" activeClassName="selected" to="/login-out" onClick={() => setFileData(false)}>
             {loginMsg}
           </NavLink>
         </div>
 
         <div className="htext3">
-          <NavLink exact activeClassName="selected" href="/" to="/kubernetes">
+          <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => setFileData(true)}>
             Kubernetes
           </NavLink>
+
         </div>
 
         <div className="htext4">
-          <NavLink exact activeClassName="selected" href="/" to="/applikationer">
+          <NavLink exact activeClassName="selected" href="/" to="/applikationer" onClick={() => setFileData(false)}>
             Applikationer
           </NavLink>
         </div>
 
         <div className="htext5">
-          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur">
+          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => setFileData(false)}>
             Infrastruktur
           </NavLink>
         </div>
@@ -59,38 +60,40 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
       </header>
 
       {showNav &&
-
         <div className="sidenav active">
           <Nav fixed="left" bg="dark" variant="dark" id="header">
             <img className="logo" src={GovCloud} alt="GovCloud" />
+            
+            {isLoggedIn && (
+              <>
+                <div className="status">
+                  <div class="alert alert-warning" role="alert">
+                    <span className="loginStatus">You have {loginName} rights </span>
+                  </div>
+                </div>
+              </>
+            )}
+
             <Nav className="flex-column">
-              {isAdmin && (
+              {isAdmin, showFileData && (
                 <>
                   <li>
-                    <NavLink className="nav-link" activeClassName="selected" to="/pods">
-                      <GiPlainCircle /> Pods
-                    </NavLink>
-                    <NavLink className="nav-link" activeClassName="selected" to="/deployments">
-                      <GiPlainCircle /> Deployments
-                    </NavLink>
-                    <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
-                      <GiPlainCircle /> Namespaces
-                    </NavLink>
-                    <NavLink className="nav-link" activeClassName="selected" to="/Services">
-                      <GiPlainCircle /> Services
-                    </NavLink>
-                  </li>
-                </>)}
-              {isLoggedIn && (
-                <>
-                  <li className="status">
-                    <div class="alert alert-warning" role="alert">
-                      <span className="loginStatus">You are logged in as {loginName}
-                      </span>
+                    <div className="filedata active">
+                      <NavLink className="nav-link" activeClassName="selected" to="/pods">
+                        <GiPlainCircle /> Pods
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/deployments">
+                        <GiPlainCircle /> Deployments
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
+                        <GiPlainCircle /> Namespaces
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/Services">
+                        <GiPlainCircle /> Services
+                      </NavLink>
                     </div>
                   </li>
-                </>
-              )}
+                </>)}
             </Nav>
           </Nav>
         </div>
