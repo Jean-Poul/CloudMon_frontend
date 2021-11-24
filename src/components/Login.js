@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import facade from "./apiFacade";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
-
+import AddUser from "./AddUser";
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -71,7 +71,7 @@ function LoggedIn() {
 
   return (
     <div>
-      
+
       <h2>{dataFromServer}</h2>
       <p>{errorMessage}</p>
       <h4>Are you sure you want to log out of CloudMon</h4>
@@ -100,8 +100,8 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
     facade.logout()
     setLoginStatus(false)
     setAdminStatus(false)
-    //header.classList.remove("adminStyle")
   }
+  
   const login = (user, pass) => {
     facade.login(user, pass)
       .then((res) => {
@@ -111,7 +111,6 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
         if (parseJwt(facade.getToken()) == "admin") {
           setAdminStatus(true)
-          //header.classList.add("adminStyle");
         }
 
       }).catch((error) => {
@@ -134,6 +133,8 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
                 <>
                   <LogIn login={login} />
                   <p>{errorMessage}</p>
+                  <br />
+                  <AddUser />
                 </>
               ) :
                 (<div>
