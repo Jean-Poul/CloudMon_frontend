@@ -30,7 +30,6 @@ const AllPods = () => {
 
     return (
         <div className="pagesMove">
-
             <Container>
                 <h2>GovCloud: Services</h2>
                 <Row className="mt-4">
@@ -70,8 +69,6 @@ const AllPods = () => {
                     </Col>
                 </Row>
             </Container>
-
-
         </div>
     );
 };
