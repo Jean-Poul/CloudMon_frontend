@@ -59,7 +59,9 @@ function LoggedIn() {
 
   useEffect(() => {
     let role = parseJwt(facade.getToken());
-    facade.fetchData(role).then(data => setDataFromServer(data.msg))
+    console.log(role);
+    console.log(role.data);
+    facade.fetchData(role).then(data => console.log(setDataFromServer(data.msg)))
       .catch((error) => {
         error.fullError.then((err) => {
           setErrorMessage(err.message);
@@ -109,7 +111,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         let name = parseJwtName(facade.getToken());
         setLoginStatus(true, name)
 
-        if (parseJwt(facade.getToken()) == "admin") {
+        if (parseJwt(facade.getToken()) === "admin") {
           setAdminStatus(true)
         }
 
