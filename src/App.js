@@ -17,6 +17,7 @@ import Applikationer from "./components/Applikationer";
 
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
+
   const [showNav, setShowNav] = useState(true)
   const [showFileData, setFileData] = useState(false)
 
@@ -71,7 +72,9 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
               <>
                 <div className="status">
                   <div class="alert alert-warning" role="alert">
-                    <span className="loginStatus">You have {loginName} rights </span>
+                    <span className="loginStatus">Logged in as: {loginName}
+                    {}
+                    </span>
                   </div>
                 </div>
               </>
