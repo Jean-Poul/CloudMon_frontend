@@ -71,7 +71,6 @@ function LoggedIn() {
 
   return (
     <div>
-
       <h2>{dataFromServer}</h2>
       <p>{errorMessage}</p>
       <h4>Are you sure you want to log out of CloudMon</h4>

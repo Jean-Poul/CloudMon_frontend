@@ -31,7 +31,7 @@ const AllPods = () => {
     return (
         <div className="pagesMove">
             <Container>
-                <h2>GovCloud: Services</h2>
+                <h2>GovCloud: Pods</h2>
                 <Row className="mt-4">
                     <Col>
                         <Table striped bordered hover>
