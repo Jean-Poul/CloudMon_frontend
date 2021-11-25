@@ -72,7 +72,9 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
               <>
                 <div className="status">
                   <div class="alert alert-warning" role="alert">
-                    <span className="loginStatus">Logged in as: {loginName}</span>
+                    <span className="loginStatus">Logged in as: {loginName}
+                    {}
+                    </span>
                   </div>
                 </div>
               </>
