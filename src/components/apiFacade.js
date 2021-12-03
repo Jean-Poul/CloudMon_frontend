@@ -31,7 +31,7 @@ function apiFacade() {
       username: user,
       password: password,
     });
-    return fetch(URL + "/api/users", options)
+    return fetch(URL + "/api/login", options)
       .then(handleHttpErrors)
       .then((res) => {
         setToken(res.token);
