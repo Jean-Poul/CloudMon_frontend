@@ -12,3 +12,6 @@ export const URLServices = "http://localhost:8080/Boilerplate-Backend/api/kubern
 
 //export https://www.jplm.dk/Boilerplate-Backend/api/kubernetes/pods
 export const URLPods = "http://localhost:8080/Boilerplate-Backend/api/kubernetes/pods";
+
+//export https://www.jplm.dk/Boilerplate-Backend/api/kubernetes/pods
+export const URLApps = "http://localhost:8080/Boilerplate-Backend/api/apps/all";
