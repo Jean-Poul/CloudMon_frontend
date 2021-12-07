@@ -17,8 +17,7 @@ const Applikationer = () => {
     const [allApp, setAllApp] = useState([]);
     const [app, setApp] = useState(initialValues);
 
-    ////////////////////////////////////////////////
-
+    /////////////////////-Handles request generically-///////////////////////////
     function makeOptions(method, body) {
         const opts = {
             method: method,
@@ -40,6 +39,7 @@ const Applikationer = () => {
         console.log("from submit " + app);
     };
 
+    /////////////////////-Handles changes when user types in indput field-///////////////////////////
     const handleChange = (event) => {
         const target = event.target;
         const id = target.id;
@@ -49,7 +49,7 @@ const Applikationer = () => {
         console.log()
     };
 
-    ////////////////////////////////////////////////
+    /////////////////////-Fetches all apps-///////////////////////////
     const fetchApps = () => {
         fetch(URLApps + "all")
             .then((res) => res.json())
@@ -58,21 +58,14 @@ const Applikationer = () => {
             });
     };
 
-
-    /*     const getApps = (evt) => {
-            evt.preventDefault();
-            fetchApps();
-        }; */
-
-
+    /////////////////////-Fetches all apps when loading the page-///////////////////////////
     useEffect(() => {
         fetchApps();
     }, []);
-    ////////////////////////////////////////////////
 
+    /////////////////////-Handles adding an app-///////////////////////////
     const addApp = () => {
         const options = makeOptions("POST", app);
-
         fetch(URLApps, options)
             .then((res) => res.json())
             .then((res) => fetchApps())
@@ -85,8 +78,7 @@ const Applikationer = () => {
             });
     };
 
-    ////////////////////////////////////////////////
-
+    /////////////////////-Handles update on app-///////////////////////////
     const updateApp = (app) => {
         const options = makeOptions("PUT", app);
 
@@ -102,9 +94,7 @@ const Applikationer = () => {
             });
     };
 
-    ////////////////////////////////////////////////
-
-
+    /////////////////////-Handles delete on app-///////////////////////////
     const deleteApp = (id) => {
         const options = makeOptions("DELETE");
 
@@ -123,8 +113,7 @@ const Applikationer = () => {
             });
     };
 
-    ////////////////////////////////////////////////
-
+    /////////////////////-Handles getting an app to fill out form with data-///////////////////////////
     const getApp = (appId) => {
         fetch(URLApps + appId)
             .then((res) => res.json())
@@ -141,12 +130,11 @@ const Applikationer = () => {
             });
     };
 
-    ////////////////////////////////////////////////
-
+    /////////////////////-contains all functionality in appForm for adding and updating app-///////////////////////////
     const appForm = () => {
         return (
             <div>
-                <h4>Tilføj eller opdater en applikation</h4>
+                <h4>Tilføj / Opdater en applikation</h4>
                 <Form onSubmit={handleSubmit} >
                     <Form.Group controlId="name">
                         <Form.Label>App Name</Form.Label>
@@ -178,30 +166,24 @@ const Applikationer = () => {
                         />
                     </Form.Group>
                 </Form>
-
-                <Button variant="success" onClick={() => addApp()}>Tilføj</Button>
-
-                <Button variant="primary" value={app.id} onClick={() => updateApp(app)}>Opdater</Button>
-
+                <Button variant="success" onClick={() => addApp(app)}>Tilføj</Button> <Button variant="primary" onClick={() => updateApp(app)}>Opdater</Button>
             </div>
         );
     };
 
-    ////////////////////////////////////////////////
-
-
+    /////////////////////-Returning Apllikationer-///////////////////////////
     return (
         <div className="pagesMove">
             <div>
                 <Container>
                     <h2>GovCloud: Applikationer</h2>
-                    Her kan du se et overblik over Applikationerne samt hvor de er installeret i GovCloud
+                    Her kan du se et overblik over Applikationerne samt hvor de er installeret i GovCloud.
+                    Derudover har du mulighed for at tilføje, slette eller redigere applikationer.
                     <Row className="mt-4">
                         <Col>
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Name</th>
                                         <th>Version</th>
                                         <th>Location</th>
@@ -212,13 +194,12 @@ const Applikationer = () => {
                                     {allApp.all && allApp.all.map((element) => {
                                         return (
                                             <tr key={element.id}>
-                                                <td>{element.id}</td>
                                                 <td>{element.name}</td>
                                                 <td>{element.version}</td>
                                                 <td>{element.location}</td>
                                                 <td>
                                                     <Button onClick={() => getApp(element.id)}>
-                                                        Hent data
+                                                        Rediger
                                                     </Button>
                                                 </td>
                                                 <td>
