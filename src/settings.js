@@ -21,3 +21,6 @@ export const URLAppsUpdate = "http://localhost:8080/Boilerplate-Backend/api/apps
 
 //export https://www.jplm.dk/Boilerplate-Backend/api/kubernetes/pods
 export const URLAppsDelete = "http://localhost:8080/Boilerplate-Backend/api/apps/delete/";
+
+//export https://www.jplm.dk/Boilerplate-Backend/api/kubernetes/pods
+export const URLUser = "http://localhost:8080/Boilerplate-Backend/api/users/lastlogin/";

@@ -14,12 +14,16 @@ import AllServices from "./components/Services";
 import Kubernetes from "./components/Kubernetes";
 import Infrastruktur from "./components/Infrastruktur";
 import Applikationer from "./components/Applikationer";
+import Komponenter from "./components/Komponenter";
+import Govcloud from "./components/Govcloud";
 
 
-const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
+const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName, rightsName }) => {
 
   const [showNav, setShowNav] = useState(true)
   const [showFileData, setFileData] = useState(false)
+  const [showInf, setShowInf] = useState(false)
+
 
   return (
     <>
@@ -27,13 +31,13 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
         <GiHamburgerMenu onClick={() => setShowNav(!showNav)} />
 
         <div className="htext">
-          <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => setFileData(false)}>
+          <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => {setFileData(false); setShowInf(false)}}>
             <GiHouse />Home
           </NavLink>
         </div>
 
         <div className="htext2">
-          <NavLink className="nav-link" activeClassName="selected" to="/login-out" onClick={() => setFileData(false)}>
+          <NavLink className="nav-link" activeClassName="selected" to="/login-out" onClick={() => {setFileData(false); setShowInf(false)}}>
             {loginMsg}
           </NavLink>
         </div>
@@ -41,26 +45,25 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
         {isLoggedIn && (
               <>
                       <div className="htext3">
-          <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => setFileData(true)}>
+          <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => {setFileData(true); setShowInf(false)}}>
             Kubernetes
           </NavLink>
 
         </div>
 
         <div className="htext4">
-          <NavLink exact activeClassName="selected" href="/" to="/applikationer" onClick={() => setFileData(false)}>
+          <NavLink exact activeClassName="selected" href="/" to="/applikationer" onClick={() => {setFileData(false); setShowInf(false)}}>
             Applikationer
           </NavLink>
         </div>
 
         <div className="htext5">
-          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => setFileData(false)}>
+          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => {setFileData(false); setShowInf(true)}}>
             Infrastruktur
           </NavLink>
         </div>
               </>
             )}
-
       </header>
 
       {showNav &&
@@ -73,7 +76,12 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                 <div className="status">
                   <div class="alert alert-warning" role="alert">
                     <span className="loginStatus">Logged in as: {loginName}
-                    {}
+                    </span>
+                    <br/>
+                    <span className="loginStatus">Last login: {}
+                    </span>
+                    <br/>
+                    <span className="loginStatus">{isAdmin ? (<div>Rights: Admin</div>) : (<div>Rights: User</div>)}
                     </span>
                   </div>
                 </div>
@@ -86,16 +94,31 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                   <li>
                     <div className="filedata active">
                       <NavLink className="nav-link" activeClassName="selected" to="/pods">
-                        <GiPlainCircle /> Pods
+                        Pods
                       </NavLink>
                       <NavLink className="nav-link" activeClassName="selected" to="/deployments">
-                        <GiPlainCircle /> Deployments
+                        Deployments
                       </NavLink>
                       <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
-                        <GiPlainCircle /> Namespaces
+                        Namespaces
                       </NavLink>
                       <NavLink className="nav-link" activeClassName="selected" to="/Services">
-                        <GiPlainCircle /> Services
+                        Services
+                      </NavLink>
+                    </div>
+                  </li>
+                </>)}
+            </Nav>
+            <Nav className="flex-column">
+              {isAdmin, showInf && (
+                <>
+                  <li>
+                    <div className="filedata active">
+                      <NavLink className="nav-link" activeClassName="selected" to="/komponenter">
+                        Komponenter
+                      </NavLink>
+                      <NavLink className="nav-link" activeClassName="selected" to="/govcloud">
+                        Elementer og dependencies
                       </NavLink>
                     </div>
                   </li>
@@ -113,6 +136,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loginName, setLoginName] = useState('');
+  const [rightsName, setRightsName] = useState('');
 
   let history = useHistory();
 
@@ -122,8 +146,9 @@ export default function App() {
     history.push("/");
   };
 
-  const setAdminStatus = (status) => {
+  const setAdminStatus = (status, name) => {
     setIsAdmin(status);
+    setRightsName(name);
     history.push("/");
   };
 
@@ -134,6 +159,7 @@ export default function App() {
         isLoggedIn={isLoggedIn}
         isAdmin={isAdmin}
         loginName={isLoggedIn ? loginName : ''}
+        rightsName={isLoggedIn ? rightsName : ''}
       />
 
       <div className="content">
@@ -168,6 +194,14 @@ export default function App() {
 
           <Route path="/services">
             <AllServices />
+          </Route>
+
+          <Route path="/komponenter">
+            <Komponenter/>
+          </Route>
+
+          <Route path="/govcloud">
+            <Govcloud/>
           </Route>
 
           <Route path="/login-out">
