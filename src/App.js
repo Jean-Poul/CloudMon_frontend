@@ -43,13 +43,13 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
         <GiHamburgerMenu onClick={() => setShowNav(!showNav)} />
 
         <div className="htext">
-          <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => { setFileData(false); setShowInf(false) }}>
+          <NavLink style={{color:"white"}} exact activeClassName="selected" href="/" to="/" onClick={() => { setFileData(false); setShowInf(false) }}>
             <GiHouse />Hjem
           </NavLink>
         </div>
 
         <div className="htext2">
-          <NavLink className="nav-link" activeClassName="selected" to="/login-out" onClick={() => { setFileData(false); setShowInf(false) }}>
+          <NavLink style={{color:"white"}} className="nav-link" activeClassName="selected" to="/login-out" onClick={() => { setFileData(false); setShowInf(false) }}>
             {loginMsg}
           </NavLink>
         </div>
@@ -57,20 +57,20 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
         {isLoggedIn && (
           <>
             <div className="htext3">
-              <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => { setFileData(true); setShowInf(false) }}>
+              <NavLink style={{color:"white"}} exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => { setFileData(true); setShowInf(false) }}>
                 Kubernetes
               </NavLink>
 
             </div>
 
             <div className="htext4">
-              <NavLink exact activeClassName="selected" href="/" to="/applikationer" onClick={() => { setFileData(false); setShowInf(false) }}>
+              <NavLink style={{color:"white"}} exact activeClassName="selected" href="/" to="/applikationer" onClick={() => { setFileData(false); setShowInf(false) }}>
                 Applikationer
               </NavLink>
             </div>
 
             <div className="htext5">
-              <NavLink exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => { setFileData(false); setShowInf(true) }}>
+              <NavLink style={{color:"white"}} exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => { setFileData(false); setShowInf(true) }}>
                 Infrastruktur
               </NavLink>
             </div>
