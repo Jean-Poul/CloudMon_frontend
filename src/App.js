@@ -19,7 +19,7 @@ import Govcloud from "./components/Govcloud";
 import { URLUser } from "./settings"
 
 
-const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName}) => {
+const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
 
   const [showNav, setShowNav] = useState(true)
   const [showFileData, setFileData] = useState(false)
@@ -86,16 +86,18 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName}) => {
             {isLoggedIn && (
               <>
                 <div className="status">
-                  <div class="alert alert-warning" role="alert">
-                    <span className="loginStatus">Logget ind som: {loginName}
-                    </span>
-                    <br />
-                    <span className="loginStatus">
-                      {fetchUser(loginName)}Sidste login: {info}
-                    </span>
-                    <br />
-                    <span className="loginStatus">{isAdmin ? (<div>Rettigheder: Admin</div>) : (<div>Rettigheder: User</div>)}
-                    </span>
+                  <div class="alert alert-info" role="alert">
+                    <h5 class="alert-heading">Brugerinformation:</h5>
+                    <hr />
+                    <h6>Logget ind som: </h6>
+                    <p className="loginStatus">{loginName}</p>
+                    <hr />
+                    <h6>Sidste login: </h6>
+                    <p className="loginStatus">
+                      {fetchUser(loginName)}{info}</p>
+                    <hr />
+                    <h6>Rettigheder: </h6>
+                    <p className="loginStatus">{isAdmin ? (<div>Admin</div>) : (<div>User</div>)}</p>
                   </div>
                 </div>
               </>
