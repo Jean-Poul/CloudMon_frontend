@@ -54,7 +54,7 @@ const Komponenter = () => {
                             {item.desciption}
                             <br/>
                             {item.additionalInfo} 
-                            <img src={item.image}></img>
+                            <img className="kompImg" src={item.image}></img>
                             <br/>
                             </div>
                         </div>

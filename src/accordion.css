@@ -41,7 +41,12 @@
   transition: all 0.75s cubic-bezier(1,0,1,0);
 }
 
-img{
+.kompImg{
   max-height:150px;
+  max-width: auto;
+}
+
+.infraImg{
+  max-height:auto;
   max-width: auto;
 }
