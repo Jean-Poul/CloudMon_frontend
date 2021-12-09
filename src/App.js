@@ -44,7 +44,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName}) => {
 
         <div className="htext">
           <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => { setFileData(false); setShowInf(false) }}>
-            <GiHouse />Home
+            <GiHouse />Hjem
           </NavLink>
         </div>
 
@@ -87,14 +87,14 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName}) => {
               <>
                 <div className="status">
                   <div class="alert alert-warning" role="alert">
-                    <span className="loginStatus">Logged in as: {loginName}
+                    <span className="loginStatus">Logget ind som: {loginName}
                     </span>
                     <br />
                     <span className="loginStatus">
-                      {fetchUser(loginName)} Last login: {info}
+                      {fetchUser(loginName)}Sidste login: {info}
                     </span>
                     <br />
-                    <span className="loginStatus">{isAdmin ? (<div>Rights: Admin</div>) : (<div>Rights: User</div>)}
+                    <span className="loginStatus">{isAdmin ? (<div>Rettigheder: Admin</div>) : (<div>Rettigheder: User</div>)}
                     </span>
                   </div>
                 </div>

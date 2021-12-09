@@ -7,7 +7,7 @@ const Govcloud = () => {
             <h2>
                 Govcloud
             </h2>
-            <img width="1400" height="1000" src={GovCloud} alt="GovCloud" />
+            <img className="infraImg" width="1300" height="900" src={GovCloud} alt="GovCloud" />
         </div>
     )
 

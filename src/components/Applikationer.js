@@ -137,10 +137,10 @@ const Applikationer = () => {
                 <h4>Tilføj / Opdater en applikation</h4>
                 <Form onSubmit={handleSubmit} >
                     <Form.Group controlId="name">
-                        <Form.Label>App Name</Form.Label>
+                        <Form.Label>App Navn</Form.Label>
                         <Form.Control
                             type="text"
-                            placeholder="Name"
+                            placeholder="Navn"
                             value={app.name}
                             onChange={handleChange}
                         />
@@ -157,10 +157,10 @@ const Applikationer = () => {
                     </Form.Group>
 
                     <Form.Group controlId="location">
-                        <Form.Label>App Location</Form.Label>
+                        <Form.Label>App Lokation</Form.Label>
                         <Form.Control
                             type="text"
-                            placeholder="Location"
+                            placeholder="Lokation"
                             value={app.location}
                             onChange={handleChange}
                         />
@@ -184,9 +184,9 @@ const Applikationer = () => {
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Navn</th>
                                         <th>Version</th>
-                                        <th>Location</th>
+                                        <th>Lokation</th>
                                         <th colSpan="2">&nbsp;</th>
                                     </tr>
                                 </thead>

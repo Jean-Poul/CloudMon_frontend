@@ -23,18 +23,18 @@ function LogIn({ login }) {
           <Col>
           </Col>
           <Col>
-            <h2>Login</h2>
+            <h2>Log ind</h2>
             <Form onChange={onChange} className="mt-4">
               <Form.Group controlId="loginForm">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Brugernavn</Form.Label>
                 <Form.Control type="text" id="username" placeholder="Enter username" />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Kodeord</Form.Label>
                 <Form.Control type="password" id="password" placeholder="Enter password" />
               </Form.Group>
               <Button onClick={performLogin} variant="primary" type="submit">
-                Login
+                Log ind
               </Button>
             </Form>
           </Col>
@@ -75,7 +75,6 @@ function LoggedIn() {
     <div>
       <h2>{dataFromServer}</h2>
       <p>{errorMessage}</p>
-      <h4>Are you sure you want to log out of CloudMon</h4>
     </div>
   )
 
@@ -102,7 +101,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
     setLoginStatus(false)
     setAdminStatus(false)
   }
-  
+
   const login = (user, pass) => {
     facade.login(user, pass)
       .then((res) => {
@@ -138,11 +137,16 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
                   <AddUser />
                 </>
               ) :
-                (<div>
-                  <LoggedIn />
-                  <Form>
-                    <Button variant="danger" onClick={logout}>Logout</Button>
-                  </Form>
+                (<div className="alertLogout">
+                  <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading"><LoggedIn /></h4>
+                    <p>Er du sikker på at du vil logge ud af GloudMon?</p>
+                    <hr></hr>
+                    <Form>
+                      <Button variant="danger" onClick={logout}>Log ud</Button>
+                    </Form>
+                  </div>
+
                 </div>)}
             </Col>
           </Row>
