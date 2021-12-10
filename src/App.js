@@ -117,7 +117,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                       <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
                         Namespaces
                       </NavLink>
-                      <NavLink className="nav-link" activeClassName="selected" to="/Services">
+                      <NavLink className="nav-link" activeClassName="selected" to="/services">
                         Services
                       </NavLink>
                     </div>
