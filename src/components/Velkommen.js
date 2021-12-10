@@ -3,6 +3,7 @@ import GovCloud from '../images/GovCloud-512x512.png'
 const Velkommen = () => {
 
     return (
+        <div className="font-link">
         <div className="pagesMove">
             <div>
                 <img src={GovCloud} alt="GovCloud" width="312" height="312" />
@@ -11,6 +12,7 @@ const Velkommen = () => {
                 </h2>
                 En monitoreringsside til overvågning af kubernetes cluster
             </div>
+        </div>
         </div>
     )
 

@@ -49,7 +49,7 @@ const AddUser = () => {
   console.log("userCreated: "+ userCreated)
 
   return (
-    <div>
+    <div className="font-link">
       <Container>
         <Row>
           <Col></Col>

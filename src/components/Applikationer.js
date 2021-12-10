@@ -173,54 +173,54 @@ const Applikationer = () => {
 
     /////////////////////-Returning Apllikationer-///////////////////////////
     return (
-        <div className="pagesMove">
-            <div>
-                <Container>
-                    <h2>GovCloud: Applikationer</h2>
-                    Her kan du se et overblik over Applikationerne samt hvor de er installeret i GovCloud.
-                    Derudover har du mulighed for at tilføje, slette eller redigere applikationer.
-                    <Row className="mt-4">
-                        <Col>
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Navn</th>
-                                        <th>Version</th>
-                                        <th>Lokation</th>
-                                        <th colSpan="2">&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {allApp.all && allApp.all.map((element) => {
-                                        return (
-                                            <tr key={element.id}>
-                                                <td>{element.name}</td>
-                                                <td>{element.version}</td>
-                                                <td>{element.location}</td>
-                                                <td>
-                                                    <Button onClick={() => getApp(element.id)}>
-                                                        Rediger
-                                                    </Button>
-                                                </td>
-                                                <td>
-                                                    <Button variant="danger" onClick={() => deleteApp(element.id)}>
-                                                        Slet
-                                                    </Button>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </Table>
+        <div className="font-link">
+            <div className="pagesMove">
+                <div>
+                    <Container>
+                        <h2>GovCloud: Applikationer</h2>
+                        Her kan du se et overblik over Applikationerne samt hvor de er installeret i GovCloud.
+                        Derudover har du mulighed for at tilføje, slette eller redigere applikationer.
+                        <Row className="mt-4">
+                            <Col>
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th>Navn</th>
+                                            <th>Version</th>
+                                            <th>Lokation</th>
+                                            <th colSpan="2">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {allApp.all && allApp.all.map((element) => {
+                                            return (
+                                                <tr key={element.id}>
+                                                    <td>{element.name}</td>
+                                                    <td>{element.version}</td>
+                                                    <td>{element.location}</td>
+                                                    <td>
+                                                        <Button onClick={() => getApp(element.id)}>
+                                                            Rediger
+                                                        </Button>
+                                                    </td>
+                                                    <td>
+                                                        <Button variant="danger" onClick={() => deleteApp(element.id)}>
+                                                            Slet
+                                                        </Button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </Table>
 
-                        </Col>
-                    </Row>
-                    {appForm()}
-                </Container>
+                            </Col>
+                        </Row>
+                        {appForm()}
+                    </Container>
+                </div>
             </div>
         </div>
-
-
     )
 
 }

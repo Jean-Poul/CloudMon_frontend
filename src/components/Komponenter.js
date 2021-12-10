@@ -37,34 +37,33 @@ const Komponenter = () => {
     }
 
     return (
-        <div className="pagesMove">
-            <h2 className="title2">Komponenter</h2>
-            <div>Valg af infrastruktur komponenter og tools.</div>
-            <br/>
+        <div className="font-link">
+            <div className="pagesMove">
+                <h2 className="title2">Komponenter</h2>
+                <div>Valg af infrastruktur komponenter og tools.</div>
+                <br />
 
-            <div className="wrapper">
-                <div className="accordion">
-                    {data.map((item, i) => (
-                        <div className="item">
-                            <div className="title" onClick={()=> toggle(i)}>
-                                <h4>{item.title}</h4>
-                                <h5>{selected === i ? "-" : "+"}</h5>
+                <div className="wrapper">
+                    <div className="accordion">
+                        {data.map((item, i) => (
+                            <div className="item">
+                                <div key={data.id} className="title" onClick={() => toggle(i)}>
+                                    <h4>{item.title}</h4>
+                                    <h5>{selected === i ? "-" : "+"}</h5>
+                                </div>
+                                <div className={selected === i ? "contentAccordion show" : "contentAccordion"}>
+                                    {item.desciption}
+                                    <br />
+                                    {item.additionalInfo}
+                                    <img className="kompImg" src={item.image}></img>
+                                    <br />
+                                </div>
                             </div>
-                            <div className={selected === i ? "contentAccordion show" : "contentAccordion"}>
-                            {item.desciption}
-                            <br/>
-                            {item.additionalInfo} 
-                            <img className="kompImg" src={item.image}></img>
-                            <br/>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
-
-
         </div>
-
 
     )
 

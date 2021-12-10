@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.font-link {
+  font-family: 'Nunito', sans-serif;
+}
+
 a {
   color: #FFF;
 }
@@ -27,17 +31,17 @@ ul li a {
 
 ul li a:hover,
 ul li a.active{
-  background: #172b4d;
+  background: #4d174d;
 }
 
 header svg {
   margin-top: -1%;
   font-size: 30px;
-  color: rgb(255, 255, 255);
+  color: #4C9AFF;
 }
 
 .selected {
-  color: white !important;
+  color: #F09D51 !important;
 }
 
 .pageContent {
@@ -69,25 +73,9 @@ header svg {
   margin-left: 10px;
 }
 
-/* .logoPad{
-width: 240px;
-height: 200px;
-left: -100%;
-background: #ffffff;
-} */
-
-.status{
-  margin-top: -30%;
-  width: 220px
-}
-
-.loginStatus{
-  color: black;
-}
-
 .sidenav {
 width: 240px;
-background: #0747A6;
+background: #313638;
 position: absolute;
 height: 100%;
 padding: 0 10px;
@@ -103,19 +91,23 @@ transition: all 1s;
   left: 0;
 }
 
+.sidenavBurger{
+  margin-top: -32px;
+}
+
 header{
 padding: 30px;
-background: #0747A6;
+background: #313638;
 height: 40px;
 }
 
 .nav-link{
   margin-bottom: -10px;
   font-size: 25px;
-  color: white;
+  color: #4C9AFF;
 }
 .nav-link:hover{
-  color: #B3D4FF;
+  color: #F09D51
 }
 
 .nav-link svg{
@@ -123,32 +115,54 @@ height: 40px;
 }
 
 .htext{
-  margin-top: -40px;
+  margin-top: -50px;
   margin-left: 210px;
   font-size: 30px;
+  color: #4C9AFF;
 }
-div.htext2{
-  margin-top: -53px;
-  margin-left: 94%;
+.htext2{
+  margin-top: -47px;
+  margin-left: 90%;
   font-size: 30px;
+  color: #4C9AFF;
 }
-div.htext3{
-  margin-top: -45px;
+.htext3{
+  margin-top: -50px;
   margin-left: 350px;
   font-size: 30px;
+  color: #4C9AFF;
 }
-div.htext4{
+.htext4{
   margin-top: -45px;
   margin-left: 525px;
   font-size: 30px;
+  color: #4C9AFF;
 }
-div.htext5{
+.htext5{
   margin-top: -45px;
   margin-left: 725px;
   font-size: 30px;
+  color: #4C9AFF;
 }
 
 .alertLogout{
   margin-top: 20px;
   width: 475px;
+}
+
+.status{
+  margin-top: -30%;
+  width: 220px
+}
+
+.loginStatus{
+  color: #313638;
+}
+
+.alert.alert-info{
+  background: #B5D2F8;
+}
+
+.alertHeading {
+color: #313638;
 }
