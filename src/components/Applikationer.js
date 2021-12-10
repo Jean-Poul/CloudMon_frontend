@@ -46,7 +46,6 @@ const Applikationer = () => {
         const value = target.value;
         setApp({ ...app, [id]: value });
         console.log("from change " + id);
-        console.log()
     };
 
     /////////////////////-Fetches all apps-///////////////////////////
@@ -166,7 +165,8 @@ const Applikationer = () => {
                         />
                     </Form.Group>
                 </Form>
-                <Button variant="success" onClick={() => addApp(app)}>Tilføj</Button> <Button variant="primary" onClick={() => updateApp(app)}>Opdater</Button>
+                <Button variant="success" onClick={() => addApp(app)}>Tilføj</Button> 
+                <Button variant="primary" onClick={() => updateApp(app)}>Opdater</Button>
             </div>
         );
     };

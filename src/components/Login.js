@@ -26,11 +26,11 @@ function LogIn({ login }) {
             <Form onChange={onChange} className="mt-4">
               <Form.Group controlId="loginForm">
                 <Form.Label>Brugernavn</Form.Label>
-                <Form.Control type="text" id="username" placeholder="Enter username" />
+                <Form.Control type="text" id="username" placeholder="Indtast brugernavn" />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Kodeord</Form.Label>
-                <Form.Control type="password" id="password" placeholder="Enter password" />
+                <Form.Control type="password" id="password" placeholder="Indtast kodeord" />
               </Form.Group>
               <Button onClick={performLogin} variant="primary" type="submit">
                 Log ind
