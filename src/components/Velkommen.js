@@ -5,8 +5,9 @@ import Image from 'react-bootstrap/Image'
 const Velkommen = () => {
 
     return (
-        <div className="font-link" style={{ position: 'absolute', left: '50%', top: '15%', transform: 'translate(-50%, -50%)' }}>
+        <div className="font-link">
             {/* <img src={GovCloud} fluid /> */}
+            <div className="pageContent">
             <div className="textMove">
                 <h1>
                     Velkommen til CloudMon
@@ -18,6 +19,7 @@ const Velkommen = () => {
                     Brug hovedmenuerne i toppen af siden til at navigere rundt
                 </div>
             </div>
+        </div>
         </div>
 
 
