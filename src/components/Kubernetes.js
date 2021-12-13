@@ -1,14 +1,18 @@
 const Kubernetes = () => {
 
     return (
-        <div className="font-link">
-            <div className="pagesMove">
-                <h2>
+        <div className="font-link" style={{ position: 'absolute', left: '50%', top: '15%', transform: 'translate(-50%, -50%)' }}>
+
+            <div className="textMove">
+                <h1>
                     Kubernetes data
-                </h2>
-                Her kan du se data fra kubernetes via menupunkterne i sidenavigationen
+                </h1>
+                <h4>
+                Her finder du et overblik over data fra Kubernetes via menuen til venstre
+                </h4>
             </div>
         </div>
+
     )
 
 }

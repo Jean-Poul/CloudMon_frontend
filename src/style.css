@@ -60,12 +60,14 @@ header svg {
   margin-top: 10%;
 }
 
-.pagesMove{
-  margin-left: 240px;
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.TextMove{
-  align-self: center;
+.textMove{
+  text-align: center;
 }
 
 .logo{
@@ -77,7 +79,7 @@ header svg {
 width: 240px;
 background: #313638;
 position: absolute;
-height: 100%;
+height: 150%;
 padding: 0 10px;
 left: -100%;
 transition: all 1s;
@@ -116,25 +118,25 @@ height: 40px;
 
 .htext{
   margin-top: -50px;
-  margin-left: 210px;
+  margin-left: 220px;
   font-size: 30px;
   color: #4C9AFF;
 }
 .htext2{
-  margin-top: -47px;
+  margin-top: -48px;
   margin-left: 90%;
   font-size: 30px;
   color: #4C9AFF;
 }
 .htext3{
   margin-top: -50px;
-  margin-left: 350px;
+  margin-left: 330px;
   font-size: 30px;
   color: #4C9AFF;
 }
 .htext4{
   margin-top: -45px;
-  margin-left: 525px;
+  margin-left: 515px;
   font-size: 30px;
   color: #4C9AFF;
 }
@@ -165,4 +167,13 @@ height: 40px;
 
 .alertHeading {
 color: #313638;
+}
+
+.content{
+  align-self: center;
+}
+
+.infraImg{
+  max-width: 100%;
+  height: auto;
 }

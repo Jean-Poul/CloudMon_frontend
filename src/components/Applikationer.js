@@ -165,7 +165,7 @@ const Applikationer = () => {
                         />
                     </Form.Group>
                 </Form>
-                <Button variant="success" onClick={() => addApp(app)}>Tilføj</Button> 
+                <Button variant="success" onClick={() => addApp(app)}>Tilføj</Button>
                 <Button variant="primary" onClick={() => updateApp(app)}>Opdater</Button>
             </div>
         );
@@ -173,52 +173,55 @@ const Applikationer = () => {
 
     /////////////////////-Returning Apllikationer-///////////////////////////
     return (
-        <div className="font-link">
-            <div className="pagesMove">
-                <div>
-                    <Container>
-                        <h2>GovCloud: Applikationer</h2>
-                        Her kan du se et overblik over Applikationerne samt hvor de er installeret i GovCloud.
-                        Derudover har du mulighed for at tilføje, slette eller redigere applikationer.
-                        <Row className="mt-4">
-                            <Col>
-                                <Table striped bordered hover>
-                                    <thead>
-                                        <tr>
-                                            <th>Navn</th>
-                                            <th>Version</th>
-                                            <th>Lokation</th>
-                                            <th colSpan="2">&nbsp;</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {allApp.all && allApp.all.map((element) => {
-                                            return (
-                                                <tr key={element.id}>
-                                                    <td>{element.name}</td>
-                                                    <td>{element.version}</td>
-                                                    <td>{element.location}</td>
-                                                    <td>
-                                                        <Button onClick={() => getApp(element.id)}>
-                                                            Rediger
-                                                        </Button>
-                                                    </td>
-                                                    <td>
-                                                        <Button variant="danger" onClick={() => deleteApp(element.id)}>
-                                                            Slet
-                                                        </Button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </Table>
+        <div className="font-link" style={{ position: 'absolute', left: '50%', top: '35%', transform: 'translate(-50%, -50%)' }}>
+            <div>
+                <Container>
+                    <div className="textMove">
+                        <h1>GovCloud Applikationer</h1>
+                        <h4>
+                            Her kan du danne dig et overblik over hvilke Applikationerne GovCloud består af, samt hvor de er installeret i GovCloud.
+                            Derudover har du mulighed for at tilføje, slette eller redigere applikationer.
+                        </h4>
 
-                            </Col>
-                        </Row>
-                        {appForm()}
-                    </Container>
-                </div>
+                    </div>
+                    <Row className="mt-4">
+                        <Col>
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>Navn</th>
+                                        <th>Version</th>
+                                        <th>Lokation</th>
+                                        <th colSpan="2">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {allApp.all && allApp.all.map((element) => {
+                                        return (
+                                            <tr key={element.id}>
+                                                <td>{element.name}</td>
+                                                <td>{element.version}</td>
+                                                <td>{element.location}</td>
+                                                <td>
+                                                    <Button onClick={() => getApp(element.id)}>
+                                                        Rediger
+                                                    </Button>
+                                                </td>
+                                                <td>
+                                                    <Button variant="danger" onClick={() => deleteApp(element.id)}>
+                                                        Slet
+                                                    </Button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </Table>
+
+                        </Col>
+                    </Row>
+                    {appForm()}
+                </Container>
             </div>
         </div>
     )

@@ -31,7 +31,6 @@ const AllDeployments = () => {
 
   return (
     <div className="font-link">
-      <div className="pagesMove">
         <Container>
           <h2>GovCloud: Deployments</h2>
           <Row className="mt-4">
@@ -74,7 +73,7 @@ const AllDeployments = () => {
           </Row>
         </Container>
       </div>
-    </div>
+
   );
 };
 export default AllDeployments

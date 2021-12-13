@@ -124,7 +124,6 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
   return (
     <div className="font-link">
-      <div className="pagesMove">
         <div className="pageContent">
           <Container>
             <Row>
@@ -137,7 +136,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
                     <AddUser />
                   </>
                 ) :
-                  (<div className="alertLogout">
+                  (<div className="alertLogout" style={{position: 'absolute', left: '50%', top: '15%', transform: 'translate(-50%)'}}>
                     <div class="alert alert-danger" role="alert">
                       <h4 class="alert-heading"><LoggedIn /></h4>
                       <p>Er du sikker på at du vil logge ud af CloudMon?</p>
@@ -153,7 +152,6 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
           </Container>
         </div>
       </div>
-    </div>
   )
 
 }

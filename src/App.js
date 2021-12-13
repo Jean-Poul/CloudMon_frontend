@@ -25,6 +25,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   const [showFileData, setFileData] = useState(false)
   const [showInf, setShowInf] = useState(false)
 
+
   ////////////////////////////////////////////////////
   const [info, setInfo] = useState([]);
   const fetchUser = () => {
@@ -35,18 +36,19 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
       });
   };
   ////////////////////////////////////////////////////
-  
+
   //Changes background color
   document.body.style = 'background: #E8E9EB;';
 
   return (
     <>
-      <header className="font-link">
+      <header className="font-link" >
+        {/* <div className={showNav ? "sidenav show" : "sidenav"}></div> */}
         <GiHamburgerMenu className="sidenavBurger" onClick={() => setShowNav(!showNav)} />
 
         <div className="htext">
           <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/" onClick={() => { setFileData(false); setShowInf(false) }}>
-            <GiHouse />Hjem
+            Hjem
           </NavLink>
         </div>
 
@@ -80,72 +82,79 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
         )}
       </header>
 
+      <div className={showNav ? "sidenav active" : "sidenav"}>
       {showNav &&
         <div className="font-link">
-          <div className="sidenav active">
-            <Nav fixed="left" bg="dark" variant="dark" id="header">
-              <img className="logo" src={GovCloud} alt="GovCloud" />
+            <div className="sidenav active">
+              
+              
+              <Nav fixed="left" bg="dark" variant="dark" id="header">
+                <img className="logo" src={GovCloud} alt="GovCloud" />
 
-              {isLoggedIn && (
-                <>
-                  <div className="status">
-                    <div class="alert alert-info" role="alert">
-                      <h5 className="alertHeading">Brugerinformation:</h5>
-                      <hr/>
-                      <h6 className="alertHeading">Logget ind som: </h6>
-                      <p className="loginStatus">{loginName}</p>
-                      <hr/>
-                      <h6 className="alertHeading">Sidste login: </h6>
-                      <p className="loginStatus">
-                        {fetchUser(loginName)}{info}</p>
-                      <hr/>
-                      <h6 className="alertHeading">Rettigheder: </h6>
-                      <p className="loginStatus">{isAdmin ? (<div>Admin</div>) : (<div>User</div>)}</p>
+                {isLoggedIn && (
+                  <>
+                    <div className="status">
+                      <div class="alert alert-info" role="alert">
+                        <h5 className="alertHeading">Brugerinformation:</h5>
+                        <hr />
+                        <h6 className="alertHeading">Logget ind som: </h6>
+                        <p className="loginStatus">{loginName}</p>
+                        <hr />
+                        <h6 className="alertHeading">Sidste login: </h6>
+                        <p className="loginStatus">
+                          {fetchUser(loginName)}{info}</p>
+                        <hr />
+                        <h6 className="alertHeading">Rettigheder: </h6>
+                        <p className="loginStatus">{isAdmin ? (<div>Admin</div>) : (<div>User</div>)}</p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              )}
+                  </>
+                )}
 
-              <Nav className="flex-column">
-                {isAdmin, showFileData && (
-                  <>
-                    <li>
-                      <div className="filedata active">
-                        <NavLink className="nav-link" activeClassName="selected" to="/pods">
-                          Pods
-                        </NavLink>
-                        <NavLink className="nav-link" activeClassName="selected" to="/deployments">
-                          Deployments
-                        </NavLink>
-                        <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
-                          Namespaces
-                        </NavLink>
-                        <NavLink className="nav-link" activeClassName="selected" to="/Services">
-                          Services
-                        </NavLink>
-                      </div>
-                    </li>
-                  </>)}
+                <Nav className="flex-column">
+                  {isAdmin, showFileData && (
+                    <>
+                      <li>
+                        <div className="filedata active">
+                          <NavLink className="nav-link" activeClassName="selected" to="/pods">
+                            Pods
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/deployments">
+                            Deployments
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
+                            Namespaces
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/Services">
+                            Services
+                          </NavLink>
+                        </div>
+                      </li>
+                    </>)}
+                </Nav>
+                <Nav className="flex-column">
+                  {isAdmin, showInf && (
+                    <>
+                      <li>
+                        <div className="filedata active">
+                          <NavLink className="nav-link" activeClassName="selected" to="/komponenter">
+                            Komponenter
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/govcloud">
+                            Elementer og dependencies
+                          </NavLink>
+                        </div>
+                      </li>
+                    </>)}
+                </Nav>
               </Nav>
-              <Nav className="flex-column">
-                {isAdmin, showInf && (
-                  <>
-                    <li>
-                      <div className="filedata active">
-                        <NavLink className="nav-link" activeClassName="selected" to="/komponenter">
-                          Komponenter
-                        </NavLink>
-                        <NavLink className="nav-link" activeClassName="selected" to="/govcloud">
-                          Elementer og dependencies
-                        </NavLink>
-                      </div>
-                    </li>
-                  </>)}
-              </Nav>
-            </Nav>
+            
+            
+            </div>
           </div>
-        </div>
+
       }
+      </div>
     </>
   );
 };

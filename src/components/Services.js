@@ -29,9 +29,7 @@ const AllServices = () => {
     }, []);
 
     return (
-        <div className="font-link">
-            <div className="pagesMove">
-
+        <div className="font-link" >
                 <Container>
                     <h2>GovCloud: Services</h2>
                     <Row className="mt-4">
@@ -73,7 +71,6 @@ const AllServices = () => {
                 </Container>
 
             </div>
-        </div>
     );
 };
 export default AllServices

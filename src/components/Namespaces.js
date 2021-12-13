@@ -29,8 +29,7 @@ const AllNamespaces = () => {
   }, []);
 
   return (
-    <div className="font-link">
-      <div className="pagesMove">
+    <div className="font-link" >
 
         <Container>
           <h2>GovCloud: Namespaces</h2>
@@ -63,7 +62,7 @@ const AllNamespaces = () => {
         </Container>
 
       </div>
-    </div>
+
 
   );
 };

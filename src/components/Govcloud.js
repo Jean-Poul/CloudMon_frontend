@@ -3,14 +3,16 @@ import GovCloud from '../images/GovCloud_E_D.png'
 const Govcloud = () => {
 
     return (
-        <div className="font-link">
-            <div className="pagesMove">
-                <h2>
-                    Govcloud
-                </h2>
-                <img className="infraImg" width="1300" height="900" src={GovCloud} alt="GovCloud" />
-            </div>
+        <div className="font-link" style={{ position: 'absolute', left: '50%', top: '45%', transform: 'translate(-50%, -50%)' }}>
+            <div className="textMove">
+            <h1>
+                Govclouds Infrastruktur
+            </h1>
+            <br/>
+            <img class="infraImg" src={GovCloud} alt="GovCloud" />
         </div>
+        </div>
+
     )
 
 }

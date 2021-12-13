@@ -37,33 +37,37 @@ const Komponenter = () => {
     }
 
     return (
-        <div className="font-link">
-            <div className="pagesMove">
-                <h2 className="title2">Komponenter</h2>
-                <div>Valg af infrastruktur komponenter og tools.</div>
-                <br />
+        <div className="font-link" style={{ position: 'absolute', left: '90%', top: '62%', transform: 'translate(-50%, -50%)' }}>
+            <div className="title2">
+                <h1>Komponenter</h1>
+                <h4>Tryk på komponenterne i GovCloud for at se udvidet information</h4>
 
-                <div className="wrapper">
-                    <div className="accordion">
-                        {data.map((item, i) => (
-                            <div className="item">
-                                <div key={data.id} className="title" onClick={() => toggle(i)}>
-                                    <h4>{item.title}</h4>
-                                    <h5>{selected === i ? "-" : "+"}</h5>
-                                </div>
-                                <div className={selected === i ? "contentAccordion show" : "contentAccordion"}>
-                                    {item.desciption}
-                                    <br />
-                                    {item.additionalInfo}
-                                    <img className="kompImg" src={item.image}></img>
-                                    <br />
-                                </div>
+            </div>
+            <br />
+
+            <div className="wrapper">
+                <div className="accordion">
+                    {data.map((item, i) => (
+                        <div className="item">
+                            <div key={data.id} className="title" onClick={() => toggle(i)}>
+                                <h4>{item.title}</h4>
+                                <img className="kompImg" src={item.image}></img>
+                                <h2>{selected === i ? "-" : "+"}</h2>
                             </div>
-                        ))}
-                    </div>
+                            <div className={selected === i ? "contentAccordion show" : "contentAccordion"}>
+                                {item.desciption}
+                                <br />
+                                {item.additionalInfo}
+                                <br />
+
+                                <br />
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
+
 
     )
 
