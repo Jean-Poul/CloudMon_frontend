@@ -54,21 +54,21 @@ const AddUser = () => {
         <Row>
           <Col></Col>
           <Col>
-            <h2 className="ca3White">Sign up</h2>
+            <h2 className="ca3White">Opret bruger</h2>
             <Form className="mt-4">
               <Form.Group controlId="userName">
                 {(userCreated === 'created') 
-                  ? <div class="alert alert-success" role="alert">You've created a user, login above.</div>
+                  ? <div class="alert alert-success" role="alert">Du har oprettet en bruger. Login foroven</div>
                   : ('')}
-                <Form.Label className="ca3White">Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" />
+                <Form.Label className="ca3White">Brugernavn</Form.Label>
+                <Form.Control type="text" placeholder="Indtast brugernavn" />
               </Form.Group>
               <Form.Group controlId="userPassword">
-                <Form.Label className="ca3White">Password</Form.Label>
-                <Form.Control type="password" placeholder="Enter password" />
+                <Form.Label className="ca3White">Kodeord</Form.Label>
+                <Form.Control type="password" placeholder="Indtast kodeord" />
               </Form.Group>
               <Button onClick={perfomAddUser} variant="primary" type="submit">
-                Submit
+                Godkend
               </Button>
             </Form>
           </Col>
