@@ -8,7 +8,6 @@ import {
 
 const Applikationer = () => {
     const initialValues = {
-        id: "",
         name: "",
         version: "",
         location: ""
@@ -17,23 +16,8 @@ const Applikationer = () => {
     const [allApp, setAllApp] = useState([]);
     const [app, setApp] = useState(initialValues);
 
-    /////////////////////-Handles request generically-///////////////////////////
-    function makeOptions(method, body) {
-        const opts = {
-            method: method,
-            headers: {
-                "Content-type": "application/json",
-                Accept: "application/json"
-            }
-        };
-        if (body) {
-            opts.body = JSON.stringify(body);
-        }
-        return opts;
-    }
-
     const handleSubmit = (event) => {
-        alert('A name was submitted: ' + app.id);
+        //alert('A name was submitted: ' + app.id);
         event.preventDefault();
         updateApp(app);
         console.log("from submit " + app);
@@ -56,6 +40,21 @@ const Applikationer = () => {
                 setAllApp(data);
             });
     };
+
+    /////////////////////-Handles request generically-///////////////////////////
+    function makeOptions(method, body) {
+        const opts = {
+            method: method,
+            headers: {
+                "Content-type": "application/json",
+                Accept: "application/json"
+            }
+        };
+        if (body) {
+            opts.body = JSON.stringify(body);
+        }
+        return opts;
+    }
 
     /////////////////////-Fetches all apps when loading the page-///////////////////////////
     useEffect(() => {
@@ -93,6 +92,23 @@ const Applikationer = () => {
             });
     };
 
+    /////////////////////-Handles getting an app to fill out form with data-///////////////////////////
+    const getApp = (appId) => {
+        fetch(URLApps + appId)
+            .then((res) => res.json())
+            .then((data) => {
+                setApp(data);
+                console.log(data);
+            })
+            .catch((err) => {
+                if (err.status) {
+                    err.fullError.then((e) => console.log(e.detail));
+                } else {
+                    console.log("Network error");
+                }
+            });
+    };
+
     /////////////////////-Handles delete on app-///////////////////////////
     const deleteApp = (id) => {
         const options = makeOptions("DELETE");
@@ -112,22 +128,6 @@ const Applikationer = () => {
             });
     };
 
-    /////////////////////-Handles getting an app to fill out form with data-///////////////////////////
-    const getApp = (appId) => {
-        fetch(URLApps + appId)
-            .then((res) => res.json())
-            .then((data) => {
-                setApp(data);
-                console.log(data);
-            })
-            .catch((err) => {
-                if (err.status) {
-                    err.fullError.then((e) => console.log(e.detail));
-                } else {
-                    console.log("Network error");
-                }
-            });
-    };
 
     /////////////////////-contains all functionality in appForm for adding and updating app-///////////////////////////
     const appForm = () => {
@@ -165,8 +165,7 @@ const Applikationer = () => {
                         />
                     </Form.Group>
                 </Form>
-                <Button variant="success" onClick={() => addApp(app)}>Tilføj</Button>
-                <Button variant="primary" onClick={() => updateApp(app)}>Opdater</Button>
+                <Button variant="success" onClick={() => addApp()}>Tilføj</Button> <Button variant="primary" onClick={() => updateApp(app)}>Opdater</Button>
             </div>
         );
     };
