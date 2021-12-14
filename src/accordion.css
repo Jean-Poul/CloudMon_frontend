@@ -1,9 +1,10 @@
 .wrapper{
-  /* display:flex; */
   height: 100vh;
   width: 100vw;
   justify-content: center;
   align-items: center;
+  text-align: left;
+
 }
 
 .accordion{
@@ -11,7 +12,7 @@
 }
 
 .item{
-  background: #E0E0E0;
+  background: #B5D2F8;
   margin-bottom: 5px;
   padding: 10px, 20px;
 }
@@ -26,6 +27,8 @@
 
 .title2{
   color: black;
+  margin-left: -73%;
+  text-align: center;
 }
 
 .contentAccordion{
@@ -42,8 +45,10 @@
 }
 
 .kompImg{
-  max-height:150px;
+  max-height:90px;
   max-width: auto;
+  float:right;
+  margin-right: 2%;
 }
 
 .infraImg{

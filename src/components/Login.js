@@ -16,8 +16,7 @@ function LogIn({ login }) {
   }
 
   return (
-    <div>
-
+    <div className="font-link">
       <Container>
         <Row>
           <Col>
@@ -124,35 +123,35 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
 
   return (
-    <div className="pagesMove">
-      <div className="pageContent">
-        <Container>
-          <Row>
-            <Col>
-              {!isLoggedIn ? (
-                <>
-                  <LogIn login={login} />
-                  <p>{errorMessage}</p>
-                  <br />
-                  <AddUser />
-                </>
-              ) :
-                (<div className="alertLogout">
-                  <div class="alert alert-danger" role="alert">
-                    <h4 class="alert-heading"><LoggedIn /></h4>
-                    <p>Er du sikker på at du vil logge ud af GloudMon?</p>
-                    <hr></hr>
-                    <Form>
-                      <Button variant="danger" onClick={logout}>Log ud</Button>
-                    </Form>
-                  </div>
+    <div className="font-link">
+        <div className="pageContent">
+          <Container>
+            <Row>
+              <Col>
+                {!isLoggedIn ? (
+                  <>
+                    <LogIn login={login} />
+                    <p>{errorMessage}</p>
+                    <br />
+                    <AddUser />
+                  </>
+                ) :
+                  (<div className="alertLogout" style={{position: 'absolute', left: '50%', top: '15%', transform: 'translate(-50%)'}}>
+                    <div class="alert alert-danger" role="alert">
+                      <h4 class="alert-heading"><LoggedIn /></h4>
+                      <p>Er du sikker på at du vil logge ud af CloudMon?</p>
+                      <hr></hr>
+                      <Form>
+                        <Button variant="danger" onClick={logout}>Log ud</Button>
+                      </Form>
+                    </div>
 
-                </div>)}
-            </Col>
-          </Row>
-        </Container>
+                  </div>)}
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
-    </div>
   )
 
 }
