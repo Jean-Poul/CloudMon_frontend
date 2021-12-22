@@ -1,3 +1,11 @@
+# CloudMon - Frontend
+### Udarbejdet af:
+**Alexander Pihl & Jean-Poul Wilhelm Luplau Leth-Møller**
+
+*CloudMon er udviklet over en periode fra den 1.11.2021 til den 05.01.2022, som del af den afsluttende hovedopgave på Datamatikeruddannelsen på Copenhagen Business Academy Lyngby, og tager udgangspunkt i en problemstilling, der ønskes løst, i virksomheden GovCloud.*
+
+--- 
+
 ## Guide for using this code
 1. Clone the repo to a folder of your choosing
 2. Open your favorite terminal
@@ -6,7 +14,6 @@
 5. Type: "code ." to show code in visual studiocode
 6. Locate the settings.js file and change the URL if you desire to run the project locally. Otherwise move on to step 7.
 7. Type: "npm start"
-8. (Optional) You can deploy your project either on your virtual machine or thru surge. I've chosen surge since it will reduce the trafic to my virtual machine for this assignment. Start by installing surge with the following command in bash "npm install --global surge". Now you can deploy your project on surge with the command "surge --project ./build --domain A_DOMAIN_NAME.surge.sh".
 
 ### Codes and login for test users:
     Name:        Password:
@@ -14,7 +21,48 @@
     admin        popcorn
     user_admin   popcorn
 
-## View the frontend interact with the deployed backend
-Turn of ad blocker when accessing the admin page - thank me later ;-)
+---
+## Repos
+[CloudMon - Frontend](https://github.com/Jean-Poul/CloudMon_frontend)
 
-[http://alex_ca3_boilerplate_frontend.surge.sh/](http://alex_ca3_boilerplate_frontend.surge.sh/)# CloudMon_frontend
+[CloudMon - Backend](https://github.com/Jean-Poul/CloudMon_backend)
+
+---
+
+## Deployed frontend & backend:
+[http://cloudmon.surge.sh/](http://cloudmon.surge.sh/)
+
+[https://www.jplm.dk/cloudmon/api/](https://www.jplm.dk/Boilerplate-Backend/api/)
+
+---
+
+## Setup Filer:
+[SetupTestUsers]()
+
+[SetupTestUsers]()
+
+---
+
+## Frontend configuration
+The frontend is a single page application (SPA) written in REACT.
+
+---
+
+## Backend Konfiguration:
+**The Database**
+- MySQL Database using Java Persistence API (JPA) (With some JPQL) to achieve ORM.
+  
+**RESTFUL Web service**
+- JAX-RS to handle REST operations
+
+**Testing**
+Consisting of unit and integration tests using:
+- jUnit
+- Grizzly webserver
+- Hamcrest
+
+**Security**
+- BCrypt plus hash/salt configurations.
+
+**CI/CD pipeline**
+- Travis configuration with github hooks - Everytime you push, travis builds and deploys
