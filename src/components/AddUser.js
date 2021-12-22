@@ -19,7 +19,6 @@ const AddUser = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = (evt) => {
-    evt.preventDefault();
 
       let options = {
         method: "POST",
