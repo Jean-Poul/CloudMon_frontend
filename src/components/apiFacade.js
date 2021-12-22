@@ -12,13 +12,16 @@ function apiFacade() {
   const setToken = (token) => {
     localStorage.setItem("jwtToken", token);
   };
+
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
+
   const loggedIn = () => {
     const loggedIn = getToken() != null;
     return loggedIn;
   };
+  
   const logout = () => {
     localStorage.removeItem("jwtToken");
   };
@@ -37,7 +40,7 @@ function apiFacade() {
 
   const fetchData = (role) => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + `/api/info/${role}`, options).then(handleHttpErrors);
+    return fetch(URL + `/api/users/${role}`, options).then(handleHttpErrors);
   };
 
   const makeOptions = (method, addToken, body) => {

@@ -1,11 +1,15 @@
 const Infrastruktur = () => {
 
     return (
-        <div className="pagesMove">
-            <h2>
-            Infrastruktur
-            </h2>
-            Her kan du se et overblik over Infrastrukturen i GovCloud
+        <div className="font-link">
+            <div className="pageContent">
+            <div className="textMove">
+                <h1>
+                    Infrastruktur
+                </h1>
+                <h4>Her finder du et overblik over Infrastrukturen i GovCloud via menuen til venstre</h4>
+            </div>
+            </div>
         </div>
     )
 

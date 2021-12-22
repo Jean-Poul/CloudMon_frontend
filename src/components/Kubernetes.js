@@ -1,11 +1,18 @@
 const Kubernetes = () => {
 
     return (
-        <div className="pagesMove">
-            <h2>
-            Kubernetes data
-            </h2>
-            Her kan du se data fra kubernetes via menupunkterne i sidenavigationen
+        <div className="font-link" >
+
+            <div className="pageContent">
+                <div className="textMove">
+                    <h1>
+                        Kubernetes data
+                    </h1>
+                    <h4>
+                        Her finder du et overblik over data fra Kubernetes via menuen til venstre
+                    </h4>
+                </div>
+            </div>
         </div>
     )
 

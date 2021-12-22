@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./style2.css";
+import React, { useState, useEffect } from "react";
+import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import Login from "./components/Login";
@@ -14,94 +14,147 @@ import AllServices from "./components/Services";
 import Kubernetes from "./components/Kubernetes";
 import Infrastruktur from "./components/Infrastruktur";
 import Applikationer from "./components/Applikationer";
+import Komponenter from "./components/Komponenter";
+import Govcloud from "./components/Govcloud";
+import { URLUser } from "./settings"
 
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
+
   const [showNav, setShowNav] = useState(true)
   const [showFileData, setFileData] = useState(false)
+  const [showInf, setShowInf] = useState(false)
+
+
+  ////////////////////////////////////////////////////
+  const [info, setInfo] = useState([]);
+  const fetchUser = () => {
+    fetch(URLUser + loginName)
+      .then((res) => res.json())
+      .then((data) => {
+        setInfo(data.lastLoginTime);
+      });
+  };
+  ////////////////////////////////////////////////////
+
+  //Changes background color
+  document.body.style = 'background: #E8E9EB;';
 
   return (
     <>
-      <header>
-        <GiHamburgerMenu onClick={() => setShowNav(!showNav)} />
+      <header className="font-link" >
+        {/* <div className={showNav ? "sidenav show" : "sidenav"}></div> */}
+        <GiHamburgerMenu className="sidenavBurger" onClick={() => setShowNav(!showNav)} />
 
         <div className="htext">
-          <NavLink exact activeClassName="selected" href="/" to="/" onClick={() => setFileData(false)}>
-            <GiHouse />Home
+          <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/" onClick={() => { setFileData(false); setShowInf(false) }}>
+            Hjem
           </NavLink>
         </div>
 
         <div className="htext2">
-          <NavLink className="nav-link" activeClassName="selected" to="/login-out" onClick={() => setFileData(false)}>
+          <NavLink style={{ color: "dodgerblue" }} className="nav-link" activeClassName="selected" to="/login-out" onClick={() => { setFileData(false); setShowInf(false) }}>
             {loginMsg}
           </NavLink>
         </div>
 
         {isLoggedIn && (
-              <>
-                      <div className="htext3">
-          <NavLink exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => setFileData(true)}>
-            Kubernetes
-          </NavLink>
+          <>
+            <div className="htext3">
+              <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/kubernetes" onClick={() => { setFileData(true); setShowInf(false) }}>
+                Kubernetes
+              </NavLink>
 
-        </div>
+            </div>
 
-        <div className="htext4">
-          <NavLink exact activeClassName="selected" href="/" to="/applikationer" onClick={() => setFileData(false)}>
-            Applikationer
-          </NavLink>
-        </div>
+            <div className="htext4">
+              <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/applikationer" onClick={() => { setFileData(false); setShowInf(false) }}>
+                Applikationer
+              </NavLink>
+            </div>
 
-        <div className="htext5">
-          <NavLink exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => setFileData(false)}>
-            Infrastruktur
-          </NavLink>
-        </div>
-              </>
-            )}
-
+            <div className="htext5">
+              <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => { setFileData(false); setShowInf(true) }}>
+                Infrastruktur
+              </NavLink>
+            </div>
+          </>
+        )}
       </header>
 
+      <div className={showNav ? "sidenav active" : "sidenav"}>
       {showNav &&
-        <div className="sidenav active">
-          <Nav fixed="left" bg="dark" variant="dark" id="header">
-            <img className="logo" src={GovCloud} alt="GovCloud" />
-            
-            {isLoggedIn && (
-              <>
-                <div className="status">
-                  <div class="alert alert-warning" role="alert">
-                    <span className="loginStatus">You have {loginName} rights </span>
-                  </div>
-                </div>
-              </>
-            )}
+        <div className="font-link">
+            <div className="sidenav active">
+              
+              
+              <Nav fixed="left" bg="dark" variant="dark" id="header">
+                <img className="logo" src={GovCloud} alt="GovCloud" />
 
-            <Nav className="flex-column">
-              {isAdmin, showFileData && (
-                <>
-                  <li>
-                    <div className="filedata active">
-                      <NavLink className="nav-link" activeClassName="selected" to="/pods">
-                        <GiPlainCircle /> Pods
-                      </NavLink>
-                      <NavLink className="nav-link" activeClassName="selected" to="/deployments">
-                        <GiPlainCircle /> Deployments
-                      </NavLink>
-                      <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
-                        <GiPlainCircle /> Namespaces
-                      </NavLink>
-                      <NavLink className="nav-link" activeClassName="selected" to="/Services">
-                        <GiPlainCircle /> Services
-                      </NavLink>
+                {isLoggedIn && (
+                  <>
+                    <div className="status">
+                      <div class="alert alert-info" role="alert">
+                        <h5 className="alertHeading">Brugerinformation:</h5>
+                        <hr />
+                        <h6 className="alertHeading">Logget ind som: </h6>
+                        <p className="loginStatus">{loginName}</p>
+                        <hr />
+                        <h6 className="alertHeading">Sidste login: </h6>
+                        <p className="loginStatus">
+                          {fetchUser(loginName)}{info}</p>
+                        <hr />
+                        <h6 className="alertHeading">Rettigheder: </h6>
+                        <p className="loginStatus">{isAdmin ? (<div>Admin</div>) : (<div>User</div>)}</p>
+                      </div>
                     </div>
-                  </li>
-                </>)}
-            </Nav>
-          </Nav>
-        </div>
+                  </>
+                )}
+
+                <Nav className="flex-column">
+                  {isAdmin, showFileData && (
+                    <>
+                      <li>
+                        <div className="filedata active">
+                          <NavLink className="nav-link" activeClassName="selected" to="/pods">
+                            Pods
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/deployments">
+                            Deployments
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/namespaces">
+                            Namespaces
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/services">
+                            Services
+                          </NavLink>
+                        </div>
+                      </li>
+                    </>)}
+                </Nav>
+                <Nav className="flex-column">
+                  {isAdmin, showInf && (
+                    <>
+                      <li>
+                        <div className="filedata active">
+                          <NavLink className="nav-link" activeClassName="selected" to="/komponenter">
+                            Komponenter
+                          </NavLink>
+                          <NavLink className="nav-link" activeClassName="selected" to="/govcloud">
+                            Elementer og dependencies
+                          </NavLink>
+                        </div>
+                      </li>
+                    </>)}
+                </Nav>
+              </Nav>
+            
+            
+            </div>
+          </div>
 
       }
+      </div>
     </>
   );
 };
@@ -119,7 +172,7 @@ export default function App() {
     history.push("/");
   };
 
-  const setAdminStatus = (status) => {
+  const setAdminStatus = (status, name) => {
     setIsAdmin(status);
     history.push("/");
   };
@@ -127,7 +180,7 @@ export default function App() {
   return (
     <div>
       <Header
-        loginMsg={isLoggedIn ? "Logout" : "Login"}
+        loginMsg={isLoggedIn ? "Log ud" : "Log ind"}
         isLoggedIn={isLoggedIn}
         isAdmin={isAdmin}
         loginName={isLoggedIn ? loginName : ''}
@@ -165,6 +218,14 @@ export default function App() {
 
           <Route path="/services">
             <AllServices />
+          </Route>
+
+          <Route path="/komponenter">
+            <Komponenter />
+          </Route>
+
+          <Route path="/govcloud">
+            <Govcloud />
           </Route>
 
           <Route path="/login-out">

@@ -16,25 +16,24 @@ function LogIn({ login }) {
   }
 
   return (
-    <div>
-
+    <div className="font-link">
       <Container>
         <Row>
           <Col>
           </Col>
           <Col>
-            <h2>Login</h2>
+            <h2>Log ind</h2>
             <Form onChange={onChange} className="mt-4">
               <Form.Group controlId="loginForm">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" id="username" placeholder="Enter username" />
+                <Form.Label>Brugernavn</Form.Label>
+                <Form.Control type="text" id="username" placeholder="Indtast brugernavn" />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" id="password" placeholder="Enter password" />
+                <Form.Label>Kodeord</Form.Label>
+                <Form.Control type="password" id="password" placeholder="Indtast kodeord" />
               </Form.Group>
               <Button onClick={performLogin} variant="primary" type="submit">
-                Login
+                Log ind
               </Button>
             </Form>
           </Col>
@@ -59,7 +58,9 @@ function LoggedIn() {
 
   useEffect(() => {
     let role = parseJwt(facade.getToken());
-    facade.fetchData(role).then(data => setDataFromServer(data.msg))
+    console.log(role);
+    console.log(role.data);
+    facade.fetchData(role).then(data => console.log(setDataFromServer(data.msg)))
       .catch((error) => {
         error.fullError.then((err) => {
           setErrorMessage(err.message);
@@ -71,10 +72,8 @@ function LoggedIn() {
 
   return (
     <div>
-
       <h2>{dataFromServer}</h2>
       <p>{errorMessage}</p>
-      <h4>Are you sure you want to log out of CloudMon</h4>
     </div>
   )
 
@@ -101,7 +100,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
     setLoginStatus(false)
     setAdminStatus(false)
   }
-  
+
   const login = (user, pass) => {
     facade.login(user, pass)
       .then((res) => {
@@ -109,7 +108,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         let name = parseJwtName(facade.getToken());
         setLoginStatus(true, name)
 
-        if (parseJwt(facade.getToken()) == "admin") {
+        if (parseJwt(facade.getToken()) === "admin") {
           setAdminStatus(true)
         }
 
@@ -124,30 +123,35 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
 
   return (
-    <div className="pagesMove">
-      <div className="pageContent">
-        <Container>
-          <Row>
-            <Col>
-              {!isLoggedIn ? (
-                <>
-                  <LogIn login={login} />
-                  <p>{errorMessage}</p>
-                  <br />
-                  <AddUser />
-                </>
-              ) :
-                (<div>
-                  <LoggedIn />
-                  <Form>
-                    <Button variant="danger" onClick={logout}>Logout</Button>
-                  </Form>
-                </div>)}
-            </Col>
-          </Row>
-        </Container>
+    <div className="font-link">
+        <div className="pageContent">
+          <Container>
+            <Row>
+              <Col>
+                {!isLoggedIn ? (
+                  <>
+                    <LogIn login={login} />
+                    <p>{errorMessage}</p>
+                    <br />
+                    <AddUser />
+                  </>
+                ) :
+                  (<div className="alertLogout" style={{position: 'absolute', left: '50%', top: '15%', transform: 'translate(-50%)'}}>
+                    <div class="alert alert-danger" role="alert">
+                      <h4 class="alert-heading"><LoggedIn /></h4>
+                      <p>Er du sikker på at du vil logge ud af CloudMon?</p>
+                      <hr></hr>
+                      <Form>
+                        <Button variant="danger" onClick={logout}>Log ud</Button>
+                      </Form>
+                    </div>
+
+                  </div>)}
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
-    </div>
   )
 
 }

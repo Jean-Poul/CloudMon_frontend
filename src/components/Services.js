@@ -29,49 +29,48 @@ const AllServices = () => {
     }, []);
 
     return (
-        <div className="pagesMove">
+        <div className="font-link" >
+                <Container>
+                    <h2>GovCloud: Services</h2>
+                    <Row className="mt-4">
+                        <Col>
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>Namespace</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Cluster IP</th>
+                                        <th>External IP</th>
+                                        <th>Port</th>
+                                        <th>Age</th>
+                                        <th>Selector</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        info.all && info.all.map(data => {
+                                            return (
+                                                <tr key={data.id}>
+                                                    <td>{data.namespace}</td>
+                                                    <td>{data.name}</td>
+                                                    <td>{data.type}</td>
+                                                    <td>{data.clusterip}</td>
+                                                    <td>{data.externalip}</td>
+                                                    <td>{data.port}</td>
+                                                    <td>{data.age}</td>
+                                                    <td>{data.selector}</td>
+                                                </tr>
+                                            )
+                                        }
+                                        )}
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                </Container>
 
-            <Container>
-                <h2>GovCloud: Services</h2>
-                <Row className="mt-4">
-                    <Col>
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>Namespace</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Cluster IP</th>
-                                    <th>External IP</th>
-                                    <th>Port</th>
-                                    <th>Age</th>
-                                    <th>Selector</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    info.all && info.all.map(data => {
-                                        return (
-                                            <tr>
-                                                <td>{data.namespace}</td>
-                                                <td>{data.name}</td>
-                                                <td>{data.type}</td>
-                                                <td>{data.clusterip}</td>
-                                                <td>{data.externalip}</td>
-                                                <td>{data.port}</td>
-                                                <td>{data.age}</td>
-                                                <td>{data.selector}</td>
-                                            </tr>
-                                        )
-                                    }
-                                    )}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-            </Container>
-
-        </div>
+            </div>
     );
 };
 export default AllServices
