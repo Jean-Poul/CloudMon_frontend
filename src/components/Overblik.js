@@ -5,7 +5,7 @@ const Infrastruktur = () => {
             <div className="pageContent">
             <div className="textMove">
                 <h1>
-                    Infrastruktur
+                    Overblik
                 </h1>
                 <h4>Her finder du et overblik over Infrastrukturen i GovCloud via menuen til venstre</h4>
             </div>
