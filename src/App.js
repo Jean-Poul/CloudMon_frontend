@@ -28,6 +28,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
 
   ////////////////////////////////////////////////////
   const [info, setInfo] = useState([]);
+  
   const fetchUser = () => {
     fetch(URLUser + loginName)
       .then((res) => res.json())
@@ -111,8 +112,9 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                   </>
                 )}
 
+                  {isAdmin && (
                 <Nav className="flex-column">
-                  {isAdmin, showFileData && (
+                  {showFileData && (
                     <>
                       <li>
                         <div className="filedata active">
@@ -132,6 +134,8 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                       </li>
                     </>)}
                 </Nav>
+                )}
+
                 <Nav className="flex-column">
                   {isAdmin, showInf && (
                     <>
@@ -148,6 +152,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                     </>)}
                 </Nav>
               </Nav>
+
             
             
             </div>
@@ -172,7 +177,7 @@ export default function App() {
     history.push("/");
   };
 
-  const setAdminStatus = (status, name) => {
+  const setAdminStatus = (status) => {
     setIsAdmin(status);
     history.push("/");
   };
