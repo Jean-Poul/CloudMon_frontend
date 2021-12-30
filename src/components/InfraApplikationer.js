@@ -2,31 +2,31 @@ import { logDOM } from '@testing-library/dom';
 import React from 'react';
 import { useState } from 'react';
 import "../accordion.css";
-import kubernetesLogo from "../images/komponenter/kubernetes-logo.png"
-import MapRLogo from "../images/komponenter/MapR-logo.png"
-import RancherLogo from "../images/komponenter/rancher-logo.png"
-import FreeipaLogo from "../images/komponenter/freeipa-logo.png"
-import graviteeLogo from "../images/komponenter/gravitee-logo.jpg"
-import KeycloakLogo from "../images/komponenter/keycloak-logo.png"
-import MariadbLogo from "../images/komponenter/mariadb-logo.png"
-import MongodbLogo from "../images/komponenter/Mongodb-logo.png"
-import PostfixLogo from "../images/komponenter/Postfix-logo.png"
-import HaproxyLogo from "../images/komponenter/haproxy-logo.png"
-import AnsibleLogo from "../images/komponenter/ansible-logo.png"
-import ElasticsearchLogo from "../images/komponenter/elasticsearch-logo.png"
-import KibanaLogo from "../images/komponenter/kibana-logo.png"
-import ZabbixLogo from "../images/komponenter/zabbix-logo.png"
-import PrometheusLogo from "../images/komponenter/prometheus-logo.png"
-import GrafanaLogo from "../images/komponenter/grafana-logo.png"
-import JaegerLogo from "../images/komponenter/jaeger-logo.png"
-import GitlabLogo from "../images/komponenter/gitlab-logo.jpg"
-import HaborLogo from "../images/komponenter/habor-logo.png"
-import JfrogLogo from "../images/komponenter/jfrog-logo.png"
-import JenkinsLogo from "../images/komponenter/jenkins-logo.png"
-import JiraLogo from "../images/komponenter/jira-Logo.png"
-import ConfluenceLogo from "../images/komponenter/confluence-logo.png"
+import kubernetesLogo from "../images/infraApplikationer/kubernetes-logo.png"
+import MapRLogo from "../images/infraApplikationer/MapR-logo.png"
+import RancherLogo from "../images/infraApplikationer/rancher-logo.png"
+import FreeipaLogo from "../images/infraApplikationer/freeipa-logo.png"
+import graviteeLogo from "../images/infraApplikationer/gravitee-logo.jpg"
+import KeycloakLogo from "../images/infraApplikationer/keycloak-logo.png"
+import MariadbLogo from "../images/infraApplikationer/mariadb-logo.png"
+import MongodbLogo from "../images/infraApplikationer/Mongodb-logo.png"
+import PostfixLogo from "../images/infraApplikationer/Postfix-logo.png"
+import HaproxyLogo from "../images/infraApplikationer/haproxy-logo.png"
+import AnsibleLogo from "../images/infraApplikationer/ansible-logo.png"
+import ElasticsearchLogo from "../images/infraApplikationer/elasticsearch-logo.png"
+import KibanaLogo from "../images/infraApplikationer/kibana-logo.png"
+import ZabbixLogo from "../images/infraApplikationer/zabbix-logo.png"
+import PrometheusLogo from "../images/infraApplikationer/prometheus-logo.png"
+import GrafanaLogo from "../images/infraApplikationer/grafana-logo.png"
+import JaegerLogo from "../images/infraApplikationer/jaeger-logo.png"
+import GitlabLogo from "../images/infraApplikationer/gitlab-logo.jpg"
+import HaborLogo from "../images/infraApplikationer/habor-logo.png"
+import JfrogLogo from "../images/infraApplikationer/jfrog-logo.png"
+import JenkinsLogo from "../images/infraApplikationer/jenkins-logo.png"
+import JiraLogo from "../images/infraApplikationer/jira-Logo.png"
+import ConfluenceLogo from "../images/infraApplikationer/confluence-logo.png"
 
-const Komponenter = () => {
+const InfraApplikationer = () => {
     const [selected, setSelected] = useState(null);
 
     const toggle = (i) => {
@@ -39,8 +39,8 @@ const Komponenter = () => {
     return (
         <div className="font-link" style={{ position: 'absolute', left: '90%', top: '62%', transform: 'translate(-50%, -50%)' }}>
             <div className="title2">
-                <h1>Komponenter</h1>
-                <h4>Tryk på komponenterne i GovCloud for at se udvidet information</h4>
+                <h1>Applikationer</h1>
+                <h4>Tryk på Applikationerne i GovCloud for at se udvidet information</h4>
 
             </div>
             <br />
@@ -197,4 +197,4 @@ const data = [
     },
 ]
 
-export default Komponenter;
+export default InfraApplikationer;
