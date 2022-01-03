@@ -31,7 +31,7 @@ const AllNamespaces = () => {
   return (
     <div className="font-link" >
 
-        <Container>
+        <Container style={{width: '100%', marginLeft: '240px', overflowY: 'auto'}}>
           <h2>GovCloud: Namespaces</h2>
           <Row className="mt-4">
             <Col>

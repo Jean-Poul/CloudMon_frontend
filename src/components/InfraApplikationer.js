@@ -37,7 +37,7 @@ const InfraApplikationer = () => {
     }
 
     return (
-        <div className="font-link" style={{ position: 'absolute', left: '90%', top: '62%', transform: 'translate(-50%, -50%)' }}>
+        <div className="font-link" style={{ position: 'absolute', left: '90%', top: '65%', transform: 'translate(-50%, -50%)' }}>
             <div className="title2">
                 <h1>Applikationer</h1>
                 <h4>Tryk på Applikationerne i GovCloud for at se udvidet information</h4>
