@@ -30,7 +30,7 @@
 ---
 
 ## Deployed frontend & backend:
-[http://cloudmon.surge.sh/](http://cloudmon.surge.sh/)
+[https://cloudmon.surge.sh/](http://cloudmon.surge.sh/)
 
 [https://www.jplm.dk/cloudmon/api/](https://www.jplm.dk/Boilerplate-Backend/api/)
 
