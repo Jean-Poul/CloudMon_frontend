@@ -31,7 +31,7 @@ const AllDeployments = () => {
 
   return (
     <div className="font-link">
-        <Container style={{width: '100%', marginLeft: '240px', overflowY: 'auto'}}>
+        <Container style={{width: '100%', height: '750px', marginLeft: '240px', overflowY: 'auto'}}>
           <h2>GovCloud: Deployments</h2>
           <Row className="mt-4">
             <Col>

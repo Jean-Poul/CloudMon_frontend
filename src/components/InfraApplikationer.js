@@ -37,11 +37,12 @@ const InfraApplikationer = () => {
     }
 
     return (
-        <div className="font-link" style={{ position: 'absolute', left: '90%', top: '800px', transform: 'translate(-50%, -50%)' }}>
+        <div className="font-link" style={{ position: 'absolute', left: '90%', top: '55%', transform: 'translate(-50%, -50%)' }}>
                 <h1>Applikationer</h1>
-                <h4>Tryk på Applikationerne i GovCloud for at se udvidet information</h4>
+                <h4>Tryk på Applikationerne i GovCloud for at se udvidet information.</h4>
+                <h4>Rul ned for at se flere</h4>
             <br />
-
+            <div style={{height: '600px', overflowY: 'auto'}}>
             <div className="wrapper">
                 <div className="accordion">
                     {data.map((item, i) => (
@@ -62,6 +63,7 @@ const InfraApplikationer = () => {
                         </div>
                     ))}
                 </div>
+            </div>
             </div>
         </div>
 
