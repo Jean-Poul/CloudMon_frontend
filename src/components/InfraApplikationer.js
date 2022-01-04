@@ -25,6 +25,7 @@ import JfrogLogo from "../images/infraApplikationer/jfrog-logo.png"
 import JenkinsLogo from "../images/infraApplikationer/jenkins-logo.png"
 import JiraLogo from "../images/infraApplikationer/jira-Logo.png"
 import ConfluenceLogo from "../images/infraApplikationer/confluence-logo.png"
+import { Container} from "react-bootstrap";
 
 const InfraApplikationer = () => {
     const [selected, setSelected] = useState(null);
@@ -37,12 +38,13 @@ const InfraApplikationer = () => {
     }
 
     return (
-        <div className="font-link" style={{ position: 'absolute', left: '90%', top: '55%', transform: 'translate(-50%, -50%)' }}>
+        <div className="font-link" >
+                <div className="pageContent">
+                <Container>
                 <h1>Applikationer</h1>
                 <h4>Tryk på Applikationerne i GovCloud for at se udvidet information.</h4>
                 <h4>Rul ned for at se flere</h4>
             <br />
-            <div style={{height: '600px', overflowY: 'auto'}}>
             <div className="wrapper">
                 <div className="accordion">
                     {data.map((item, i) => (
@@ -64,6 +66,7 @@ const InfraApplikationer = () => {
                     ))}
                 </div>
             </div>
+            </Container>
             </div>
         </div>
 
