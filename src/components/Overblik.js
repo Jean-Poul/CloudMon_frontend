@@ -1,7 +1,7 @@
 const Infrastruktur = () => {
 
     return (
-        <div className="font-link">
+        <div className="font-link" >
             <div className="pageContent">
             <div className="textMove">
                 <h1>
