@@ -12,9 +12,9 @@ import AllDeployments from "./components/Deployments";
 import AllNamespaces from "./components/Namespaces";
 import AllServices from "./components/Services";
 import Kubernetes from "./components/Kubernetes";
-import Infrastruktur from "./components/Infrastruktur";
+import Overblik from "./components/Overblik";
 import Applikationer from "./components/Applikationer";
-import Komponenter from "./components/Komponenter";
+import InfraApplikationer from "./components/InfraApplikationer";
 import Govcloud from "./components/Govcloud";
 import { URLUser } from "./settings"
 
@@ -28,6 +28,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
 
   ////////////////////////////////////////////////////
   const [info, setInfo] = useState([]);
+  
   const fetchUser = () => {
     fetch(URLUser + loginName)
       .then((res) => res.json())
@@ -74,8 +75,8 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
             </div>
 
             <div className="htext5">
-              <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/infrastruktur" onClick={() => { setFileData(false); setShowInf(true) }}>
-                Infrastruktur
+              <NavLink style={{ color: "dodgerblue" }} exact activeClassName="selected" href="/" to="/overblik" onClick={() => { setFileData(false); setShowInf(true) }}>
+                Overblik
               </NavLink>
             </div>
           </>
@@ -111,8 +112,9 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                   </>
                 )}
 
+                  {isAdmin && (
                 <Nav className="flex-column">
-                  {isAdmin, showFileData && (
+                  {showFileData && (
                     <>
                       <li>
                         <div className="filedata active">
@@ -132,22 +134,25 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
                       </li>
                     </>)}
                 </Nav>
+                )}
+
                 <Nav className="flex-column">
                   {isAdmin, showInf && (
                     <>
                       <li>
                         <div className="filedata active">
-                          <NavLink className="nav-link" activeClassName="selected" to="/komponenter">
-                            Komponenter
+                          <NavLink className="nav-link" activeClassName="selected" to="/infraapplikationer">
+                            Applikationer
                           </NavLink>
                           <NavLink className="nav-link" activeClassName="selected" to="/govcloud">
-                            Elementer og dependencies
+                            Infrastruktur
                           </NavLink>
                         </div>
                       </li>
                     </>)}
                 </Nav>
               </Nav>
+
             
             
             </div>
@@ -172,7 +177,7 @@ export default function App() {
     history.push("/");
   };
 
-  const setAdminStatus = (status, name) => {
+  const setAdminStatus = (status) => {
     setIsAdmin(status);
     history.push("/");
   };
@@ -200,8 +205,8 @@ export default function App() {
             <Applikationer />
           </Route>
 
-          <Route path="/infrastruktur">
-            <Infrastruktur />
+          <Route path="/overblik">
+            <Overblik />
           </Route>
 
           <Route path="/pods">
@@ -220,8 +225,8 @@ export default function App() {
             <AllServices />
           </Route>
 
-          <Route path="/komponenter">
-            <Komponenter />
+          <Route path="/infraapplikationer">
+            <InfraApplikationer />
           </Route>
 
           <Route path="/govcloud">

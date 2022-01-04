@@ -3,7 +3,7 @@ import GovCloud from '../images/GovCloud_E_D.png'
 const Govcloud = () => {
 
     return (
-        <div className="font-link" style={{ position: 'absolute', left: '50%', top: '45%', transform: 'translate(-50%, -50%)' }}>
+        <div className="font-link" style={{width: '100%', marginLeft: '180px', overflowY: 'auto'}}>
             <div className="textMove">
             <h1>
                 Govclouds Infrastruktur
