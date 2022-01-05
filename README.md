@@ -1,5 +1,5 @@
 # CloudMon - Frontend
-### Udarbejdet af:
+### Developed by:
 **Alexander Pihl & Jean-Poul Wilhelm Luplau Leth-Møller**
 
 *CloudMon er udviklet over en periode fra den 1.11.2021 til den 05.01.2022, som del af den afsluttende hovedopgave på Datamatikeruddannelsen på Copenhagen Business Academy Lyngby, og tager udgangspunkt i en problemstilling, der ønskes løst, i virksomheden GovCloud.*
@@ -36,7 +36,7 @@
 
 ---
 
-## Setup Filer:
+## Setup Files:
 [SetupTestUsers](https://gist.github.com/Jean-Poul/5809e72e97be979e29daaed60ef662d1)
 
 [SetupTestData](https://gist.github.com/Jean-Poul/c7badf890de76f6a0738e3b358a47c5f)
@@ -62,9 +62,10 @@ The frontend is a single page application (SPA) written in React.
 
 **Testing**
 Consisting of unit and integration tests using:
-- jUnit
 - Grizzly webserver
 - Hamcrest
+- JUnit
+- REST-Assured
 
 **Security**
 - BCrypt plus hash/salt configurations.
