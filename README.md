@@ -11,7 +11,7 @@
 2. Open your favorite terminal
 3. Type: "npm install"
 4. Type: "npm run build"
-5. Type: "code ." to show code in visual studiocode
+5. Type: "code ." to view the code in visual studiocode
 6. Locate the settings.js file and change the URL if you desire to run the project locally. Otherwise move on to step 7.
 7. Type: "npm start"
 
