@@ -2,7 +2,7 @@
 ### Developed by:
 **Alexander Pihl & Jean-Poul Wilhelm Luplau Leth-Møller**
 
-*CloudMon er udviklet over en periode fra den 1.11.2021 til den 05.01.2022, som del af den afsluttende hovedopgave på Datamatikeruddannelsen på Copenhagen Business Academy Lyngby, og tager udgangspunkt i en problemstilling, der ønskes løst, i virksomheden GovCloud.*
+*CloudMon is developed over the periode of 1.11.2021 to 05.01.2022 as a part of our final exam with the subject Computer Science on Copenhagen Business Academy in Lyngby and is based on a problem the company GovCloud want us to solve.*
 
 --- 
 
